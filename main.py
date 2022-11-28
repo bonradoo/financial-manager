@@ -1,6 +1,6 @@
 #!/usr/bin/python3
+import budget, invest, os
 from datetime import date
-import os
 import pandas as pd
 
 #fix pandas highliting
@@ -17,21 +17,6 @@ def highlight_rows(row):
     else: color = '#BAE1FF' # Blue
     return ['background-color: {}'.format(color) for r in row]
 
-def addIncome():
-    while True:
-        incTitle = input('Income title: ')
-        incAmount = input('Income amount: ')
-        if incAmount.isnumeric(): return['inc', '-', incTitle, incAmount]
-        else: print('Incorrect input. Try again')
-
-def addExpense():
-    while True:
-        expTitle = input('Expense title: ')
-        expPlace = input('Expense place: ')
-        expAmount = input('Expense amount: ')
-        if expAmount.isnumeric(): return['exp', expPlace, expTitle, expAmount]
-        else: print('Incorrect input. Try again')
-
 def saveToFile(line):
     thisMonth = date.today().strftime('%B')
     filePath = 'logFinance' + str(thisMonth) + '.csv'
@@ -42,10 +27,10 @@ def printBalance():
     thisMonth = date.today().strftime('%B')
     filePath = 'logFinance' + str(thisMonth) + '.csv'
     df = pd.read_csv(filePath, sep=',')
-    df.style.apply(highlight_rows, axis=1)
-    print(df)
+    #df.style.apply(highlight_rows, axis=1)
+    print(df, end='\n\n')
 
-def budgetMenu():
+def mainMenu():
     while True:
         print('1. Add income')
         print('2. Add expense')
@@ -56,10 +41,10 @@ def budgetMenu():
         match choice:
             case '1':
                 clear()
-                saveToFile(addIncome())
+                saveToFile(budget.addIncome())
             case '2':
                 clear()
-                saveToFile(addExpense())
+                saveToFile(budget.addExpense())
             case '3':
                 clear()
                 printBalance()
@@ -70,7 +55,7 @@ def budgetMenu():
         
 
 def main():
-    budgetMenu()
+    mainMenu()
     
 
 if __name__ == '__main__':
