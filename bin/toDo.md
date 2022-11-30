@@ -4,7 +4,8 @@
 - Budget
     - Color terminal (pandas)
     - Pass float income/expense
-    - Idiotproof input
+    - Set financial month manually
+    - Sort by title, place or amount
 - Invest
     - Add links to articles
     - Fetch articles
