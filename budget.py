@@ -31,14 +31,13 @@ def addExpense():
 
 def printBalance():
     print('Choose file: ')
-    for i in range(len(os.listdir('./bin/log'))): print(str(i+1) + '.', os.listdir('./bin/log')[i])
-
-
+    fileArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
+    for i in fileArr: print(i)
+    choice = input('Choice: ')
+    for i in fileArr:
+        if choice == i[0]: filePath = './bin/log/' + i.replace(choice + '. ', '', 1)
     try:
-        thisMonth = date.today().strftime('%B')
-        filePath = './bin/log/logFinance' + str(thisMonth) + '.csv'
         df = pd.read_csv(filePath, sep=',')
-        #df.style.apply(highlight_rows, axis=1)
         print(df, end='\n\n')
     except:
         print('Error occured while trying to open the file')
