@@ -2,11 +2,12 @@
 
 ### To do list (to V1.0)
 - Budget
-    - Color terminal (pandas)
+    - 🔴 Color terminal (pandas)
     - Set financial month manually
     - Sort by title, place or amount
     - Multiple files choice
     - 🟢 Pass float income/expense
+    - 🟢 Calculate totals
 - Invest
     - Add links to articles
     - Fetch articles
