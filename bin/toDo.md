@@ -7,6 +7,8 @@
     - Sort by title, place or amount
     - Multiple files choice
     - 🟢 Pass float income/expense
+    - Multi-currency (ex. $1)
+    - 🟢 Files structure
 - Invest
     - Add links to articles
     - Fetch articles

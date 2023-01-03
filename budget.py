@@ -1,5 +1,5 @@
 from datetime import date
-import pandas as pd, os
+import pandas as pd, os, csv
 
 #Type,Shop,Title,Amount
 #inc,-,Income,Amount
@@ -9,8 +9,23 @@ def clear(): os.system('cls')
 def saveToFile(line):
     try:
         thisMonth = date.today().strftime('%B')
-        filePath = './bin/log/logFinance' + str(thisMonth) + '.csv'
-        with open(filePath, 'a') as f: f.write(','.join(line) + '\n')
+        thisYear = date.today().strftime('%Y')
+        filePath = './bin/log/' + str(thisYear) + 'logFinance' + str(thisMonth) + '.csv'
+        with open(filePath, 'r') as f:
+            try:
+                hasHeading = csv.Sniffer().has_header(f.read(1024))
+                print('fdsa')
+            except csv.Error:
+                hasHeading = False
+                print('asdf')
+
+        with open(filePath, 'a') as f:
+            if hasHeading:
+                f.write(','.join(line) + '\n')
+            else:
+                f.write('Type,Shop,Title,Amount\n')
+                f.write(','.join(line) + '\n')
+            
     except:
         print('Error occured while saving the file')
 
@@ -31,13 +46,18 @@ def addExpense():
 
 def printBalance():
     print('Choose file: ')
-    fileArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
-    for i in fileArr: print(i)
+    yearArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
+    for i in yearArr: print(i)
     choice = input('Choice: ')
-    for i in fileArr:
-        if choice == i[0]: filePath = './bin/log/' + i.replace(choice + '. ', '', 1)
+    for i in yearArr:
+        if choice == i[0]: 
+            filePath = './bin/log/' + i.replace(choice + '. ', '', 1)
+            monthArr = [str(n+1) + '. ' + os.listdir(filePath)[n] for n in range(len(os.listdir(filePath)))]
     try:
         df = pd.read_csv(filePath, sep=',')
+        clear()
+        for i in yearArr:
+            if choice == i[0]: print(i.replace(choice + '. ', '', 1))
         print(df, end='\n\n')
     except:
         print('Error occured while trying to open the file')
@@ -53,10 +73,10 @@ def budgetMenu():
         match choice:
             case '1':
                 clear()
-                addIncome()
+                saveToFile(addIncome())
             case '2':
                 clear()
-                addExpense()
+                saveToFile(addExpense())
             case '3':
                 clear()
                 printBalance()
