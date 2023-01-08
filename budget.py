@@ -46,36 +46,25 @@ def addExpense():
         expAmount = input('Expense amount: ')
         if ((expAmount.replace('.', '', 1)).replace(',', '', 1)).isdigit(): return['exp', expPlace, expTitle, "\"" + expAmount.replace('.', ',', 1) + "\""]
         else: print('Incorrect input. Try again')
+    
+def calcTotal(filePath):
+    file = pd.read_csv(filePath, sep=',')
 
 def printBalance():
     print('Choose file: ')
-    yearArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
-    for i in yearArr: print(i)
-    yearChoice = input('Choice: ')
-    for i in yearArr:
-        if yearChoice == i[0]: 
-            filePath = './bin/log/' + i.replace(yearChoice + '. ', '', 1) + '/'
-            if os.listdir(filePath): 
-                monthArr = [str(n+1) + '. ' + os.listdir(filePath)[n] for n in range(len(os.listdir(filePath)))]
-            else:
-                print('Empty directory')
-                break
-
-            for j in monthArr: print(j)
-            monthChoice = input('Choice: ')
-            for j in monthArr:
-                if monthChoice == j[0]:
-                    filePath = filePath + j.replace(monthChoice + '. ', '', 1)
+    fileArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
+    for i in fileArr: print(i)
+    choice = input('Choice: ')
+    for i in fileArr:
+        if choice == i[0]: filePath = './bin/log/' + i.replace(choice + '. ', '', 1)
     try:
+        income = []
+        expense = []
         df = pd.read_csv(filePath, sep=',')
-        clear()
-        for i in yearArr:
-            if yearChoice == i[0]: print(i.replace(yearChoice + '. ', '', 1), end=', ')
-        for h in monthArr:
-            if monthChoice == h[0]: print(h.replace(monthChoice + '. ', '', 1))
         print(df, end='\n\n')
+
     except:
-        print('Error occured while trying to open the file')
+        print('Error occured while trying to open the file')   
 
 def budgetMenu():
     while True:
