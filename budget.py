@@ -9,19 +9,22 @@ def clear(): os.system('cls')
 def saveToFile(line):
     try:
         thisMonth = date.today().strftime('%B')
-        thisYear = date.today().strftime('%Y')
+        #thisYear = date.today().strftime('%Y')
+        thisYear = 2024
         filePath = './bin/log/' + str(thisYear)
+        print(filePath)
         if not os.path.exists(filePath): os.makedirs(filePath)
-        filePath = filePath + '/logFinance' + str(thisMonth) + '.csv'
-        if not os.path.exists(filePath):
-            hasHeading = False
-        else:
-            with open(filePath, 'r') as f:
-                try:
-                    hasHeading = csv.Sniffer().has_header(f.read(1024))    
-                except csv.Error:
-                    hasHeading = False
-            
+
+        filePath = filePath +  + '/logFinance' + str(thisMonth) + '.csv'
+        print(filePath)
+        with open(filePath, 'r') as f:
+            try:
+                hasHeading = csv.Sniffer().has_header(f.read(1024))
+                
+            except csv.Error:
+                hasHeading = False
+                print('asdf')
+
         with open(filePath, 'a') as f:
             if hasHeading:
                 f.write(','.join(line) + '\n')
@@ -46,25 +49,36 @@ def addExpense():
         expAmount = input('Expense amount: ')
         if ((expAmount.replace('.', '', 1)).replace(',', '', 1)).isdigit(): return['exp', expPlace, expTitle, "\"" + expAmount.replace('.', ',', 1) + "\""]
         else: print('Incorrect input. Try again')
-    
-def calcTotal(filePath):
-    file = pd.read_csv(filePath, sep=',')
 
 def printBalance():
     print('Choose file: ')
-    fileArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
-    for i in fileArr: print(i)
-    choice = input('Choice: ')
-    for i in fileArr:
-        if choice == i[0]: filePath = './bin/log/' + i.replace(choice + '. ', '', 1)
-    try:
-        income = []
-        expense = []
-        df = pd.read_csv(filePath, sep=',')
-        print(df, end='\n\n')
+    yearArr = [str(i+1) + '. ' + os.listdir('./bin/log')[i] for i in range(len(os.listdir('./bin/log')))]
+    for i in yearArr: print(i)
+    yearChoice = input('Choice: ')
+    for i in yearArr:
+        if yearChoice == i[0]: 
+            filePath = './bin/log/' + i.replace(yearChoice + '. ', '', 1) + '/'
+            if os.listdir(filePath): 
+                monthArr = [str(n+1) + '. ' + os.listdir(filePath)[n] for n in range(len(os.listdir(filePath)))]
+            else:
+                print('Empty directory')
+                break
 
+            for j in monthArr: print(j)
+            monthChoice = input('Choice: ')
+            for j in monthArr:
+                if monthChoice == j[0]:
+                    filePath = filePath + j.replace(monthChoice + '. ', '', 1)
+    try:
+        df = pd.read_csv(filePath, sep=',')
+        clear()
+        for i in yearArr:
+            if yearChoice == i[0]: print(i.replace(yearChoice + '. ', '', 1), end=', ')
+        for h in monthArr:
+            if monthChoice == h[0]: print(h.replace(monthChoice + '. ', '', 1))
+        print(df, end='\n\n')
     except:
-        print('Error occured while trying to open the file')   
+        print('Error occured while trying to open the file')
 
 def budgetMenu():
     while True:
