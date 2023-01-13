@@ -9,14 +9,15 @@ def clear(): os.system('cls')
 def saveToFile(line):
     try:
         thisMonth = date.today().strftime('%B')
-        #thisYear = date.today().strftime('%Y')
-        thisYear = 2024
-        filePath = './bin/log/' + str(thisYear)
-        print(filePath)
-        if not os.path.exists(filePath): os.makedirs(filePath)
+        thisYear = date.today().strftime('%Y')
 
-        filePath = filePath +  + '/logFinance' + str(thisMonth) + '.csv'
-        print(filePath)
+        filePath = './bin/log/' + str(thisYear)
+        if not os.path.exists(filePath): os.makedirs(filePath)
+        
+        filePath = filePath + '/logFinance' + str(thisMonth) + '.csv'
+        if not os.path.exists(filePath): 
+            with open(filePath, 'w') as f: f.write('Type,Shop,Title,Amount\n')
+
         with open(filePath, 'r') as f:
             try:
                 hasHeading = csv.Sniffer().has_header(f.read(1024))

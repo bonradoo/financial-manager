@@ -7,6 +7,7 @@
     - Sort by title, place or amount
     - Multiple files choice
     - 🟢 Pass float income/expense
+    - Encryption
 - Invest
     - Add links to articles
     - Fetch articles
