@@ -1,9 +1,27 @@
 from datetime import date
 import pandas as pd, os
+import yfinance as yf
 
 #StockName,StartDate,BuyPrice,CloseDate,SellPrice,ProfitLoss
 #CDProjketRed,01-01-2021,100,01-12-2022,150,50
 def clear(): os.system('cls')
+
+def checkStockPrice():
+    
+    stockTicker = input('Define stock ticker: ')
+
+    filePath = './bin/stock/Tickers.txt'
+    if not os.path.exists(filePath): 
+            with open(filePath, 'w') as f:
+                pass
+
+    with open(filePath, 'a') as file:
+        file.writelines(stockTicker)
+
+    ticker = yf.Ticker(stockTicker)
+    price = ticker.info['regularMarketPrice']
+    print(ticker, price)
+    
 
 def saveToFile(line):
     thisMonth = date.today().strftime('%B')
@@ -51,7 +69,7 @@ def investMenu():
 
 
 def main():
-    pass
+    checkStockPrice()
 
 if __name__ == '__main__':
     main()

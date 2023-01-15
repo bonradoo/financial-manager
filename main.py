@@ -6,8 +6,8 @@ def clear(): os.system('cls')
 
 def mainMenu():
 
-    if os.path.exists('./bin/log/pass.txt'):
-        if not os.stat('./bin/log/pass.txt').st_size == 0:
+    if os.path.exists('./bin/pass.key'):
+        if not os.stat('./bin/pass.key').st_size == 0:
             while True:
                 if userControl.checkCorrect():
                     # store hashed key in some variable (decode files only when needed)
