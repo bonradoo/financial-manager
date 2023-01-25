@@ -1,23 +1,20 @@
 #!/usr/bin/python3
 import budget, invest, os, userControl
 
+
 #fix pandas highliting
 def clear(): os.system('cls')
 
 def mainMenu():
-
-    if os.path.exists('./bin/pass.key'):
-        if not os.stat('./bin/pass.key').st_size == 0:
-            while True:
-                if userControl.checkCorrect():
-                    # store hashed key in some variable (decode files only when needed)
-                    break
-                else:
-                    print('Incorrect password')
-        else:
-            userControl.setPassword()            
-    else:
+    if not os.path.exists('./bin/pass.key') and  os.stat('./bin/pass.key').st_size == 0:
         userControl.setPassword()
+    else:
+        while True:
+            if userControl.checkCorrect():
+                # store hashed key in some variable (decode files only when needed)
+                break
+            else:
+                print('Incorrect password')  
 
     clear()
     while True:

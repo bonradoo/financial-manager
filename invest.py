@@ -1,11 +1,14 @@
-from datetime import date, timedelta
-import pandas as pd, os
+from datetime import date
+import pandas as pd
+import os
 import yfinance as yf
 from matplotlib import pyplot as plt
 import pendulum
+import csv
+import misc
 
-#StockName,StartDate,BuyPrice,CloseDate,SellPrice,ProfitLoss
-#CDProjketRed,01-01-2021,100,01-12-2022,150,50
+#StockName,StartDate,BuyPrice,CloseDate,SellPrice,ProfitLoss,CurrentPrice
+#CDProjketRed,01-01-2021,100,01-12-2022,150,50,132
 def clear(): os.system('cls')
 
 def checkStockPrice():
@@ -27,7 +30,7 @@ def showStockGraph():
     plt.plot(dt_list, time_series, linewidth=2)
     plt.show()
 
-def stockMenu():
+def marketMenu():
     while True:
         print('1. Add stock tickers')
         print('2. Check stock prices')
@@ -35,7 +38,6 @@ def stockMenu():
         print('4. Return')
         print('----------------')
         choice = input('Choice: ')
-
 
         match choice:
             case '1':
@@ -52,33 +54,70 @@ def stockMenu():
             case _:
                 print('Inccorrect choice')
 
-
-
-    # filePath = './bin/stock/tickers.txt'
-    # if not os.path.exists(filePath): 
-    #         with open(filePath, 'w') as f:
-    #             pass
-    
-
 def saveToFile(line):
-    thisMonth = date.today().strftime('%B')
-    filePath = './bin/log/logInvestements' + str(thisMonth) + '.csv'
-    with open(filePath, 'a') as f: f.write(','.join(line) + '\n')
+    try:
+        filePath = './bin/stock/logInvestement.txt'
+        #StockName,StartDate,BuyPrice,CloseDate,SellPrice,ProfitLoss,CurrentPrice
+        if not os.path.exists(filePath): 
+            with open(filePath, 'w') as f: 
+                f.write('Stock Name,Start Date,Buy Amount,Buy Price,Close Date,Sell Amount,Sell Price,Profit/Loss\n')
 
+        with open(filePath, 'r') as f:
+            try:
+                hasHeading = csv.Sniffer().has_header(f.read(1024))
+            except csv.Error:
+                print('Error')
+                hasHeading = False
+
+        with open(filePath, 'a') as f:
+            if hasHeading:
+                f.write(','.join(line) + '\n')
+            else:
+                f.write('Stock Name,Start Date,Buy Amount,Buy Price,Close Date,Sell Amount,Sell Price,Profit/Loss\n')
+                f.write(','.join(line) + '\n')
+    except:
+        print('Error occured while saving the file')
+
+#Stock Name, Start Date, Buy Amount, Buy Price, Close Date, Sell Amount, Sell Price, Profit / Loss
 def addInv():
-    stockName = input('Stock name: ')
-    startDate = input('Start date: ')
-    buyPrice = input('Buy price: ')
-    return (['CDProjketRed', '01-01-2021', '100'])
+    stockName = input('Stock ticker: ')
+    buyDate = input('Start date: ')
+    buyAmount = input('Stock amount: ')
+    buyPrice = input('Individual stock price: ')
+    saveToFile([stockName, buyDate, buyAmount, buyPrice, '-', '-', '-', '-'])
+    clear()
 
 def closeInv():
-    pass
+    stockName = input('Stock ticker: ')
+    sellDate = input('End date: ')
+    sellAmount = input('Stock amount: ')
+    sellPrice = input('Individual stock price: ')
+
+def calcPortfolio():
+    filePath = './bin/stock/logInvestement.txt'
+    if not os.path.exists(filePath): 
+        print('No file to show portfolio from')
+        return
+    with open(filePath, 'r') as file:
+        lines = file.read()
+        print(lines)
 
 def printInv():
-    thisMonth = date.today().strftime('%B')
-    filePath = './bin/log/logInvestements' + str(thisMonth) + '.csv'
-    df = pd.read_csv(filePath, sep=',')
-    print(df, end='\n\n')
+    filePath = './bin/stock/logInvestement.txt'
+
+    with open(filePath, 'r') as file:
+        frames = [line.strip('\n') for line in file]
+    elements = [i.split(',') for i in frames]
+
+    res = [[elements[0][i], elements[1][i]] for i in range(len(elements[0]))]
+
+    resDict = {}
+    for i in res:
+        misc.addToDict(resDict, i[0], i[1:]) 
+    
+    df = pd.DataFrame(resDict)
+    print(df)
+    
 
 def investMenu():
     while True:
@@ -101,7 +140,7 @@ def investMenu():
                 printInv()
             case '4':
                 clear()
-                stockMenu()
+                marketMenu()
             case '5':
                 clear()
                 return
@@ -110,7 +149,7 @@ def investMenu():
 
 
 def main():
-    checkStockPrice()
+    pass
 
 if __name__ == '__main__':
     main()
