@@ -5,6 +5,7 @@ import pandas as pd
 import pandastable
 
 
+
 def clearEntry(shop, title, amount):
     shop.delete()
     title.delete()
@@ -56,7 +57,9 @@ def saveToFile(line):
 
 def addLog(app):
     frame = customtkinter.CTkFrame(app, width=740, height=50, corner_radius=10)
-    frame.place(relx=0.02, rely=0.01)
+    frame.place(relx=0.02, rely=0.02)
+
+    
 
     shop = customtkinter.CTkEntry(frame, width=150, placeholder_text="Shop")
     shop.place(relx=0.33, rely=0.47, anchor=tkinter.CENTER)
@@ -81,7 +84,63 @@ def addLog(app):
                                     shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end')])
     button.place(relx=0.92, rely=0.47, anchor=tkinter.CENTER)
 
+    
+
     printBudget(app)
+    printTotals(app)
+
+def printTotals(frame):
+    totalsFrame = customtkinter.CTkFrame(frame, width=740, height=50, corner_radius=10)
+    totalsFrame.place(relx=0.02, rely=0.14)
+    
+
+    expFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
+    expFrame.place(relx=0.03, rely=0.11)
+
+    incFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
+    incFrame.place(relx=0.36, rely=0.11)
+
+    balFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
+    balFrame.place(relx=0.69, rely=0.11)
+
+    def getExp():
+        filePath = 'logs.txt'
+        frames = []
+        with open(filePath, 'r', encoding='utf-8') as file:
+            for line in file: frames.append(line.strip('\n'))
+        elements = [i.split(',') for i in frames]
+
+        totalExp = 0
+        for i in elements:
+            if i[0] == 'exp': totalExp += float(i[3])
+        return round(totalExp, 2)
+    
+    def getInc():
+        filePath = 'logs.txt'
+        frames = []
+        with open(filePath, 'r', encoding='utf-8') as file:
+            for line in file: frames.append(line.strip('\n'))
+        elements = [i.split(',') for i in frames]
+
+        totalInc = 0
+        for i in elements:
+            if i[0] == 'inc': totalInc += float(i[3])
+        return round(totalInc, 2)
+
+
+    titleFont = customtkinter.CTkFont(family='Arial', size=12, weight='bold')
+    totalExpTitle = customtkinter.CTkLabel(expFrame, width=50, height=32, text='Total expense: ', font=titleFont)
+    totalExpTitle.place(relx=0.05, rely=0.15)
+
+    totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=str(getExp())+' PLN', font=('Arial', 12))
+    totalExpValue.place(relx=0.52, rely=0.18)
+
+    totalIncTitle = customtkinter.CTkLabel(incFrame, width=50, height=32, text='Total income: ', font=titleFont)
+    totalIncTitle.place(relx=0.05, rely=0.15)
+
+    totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=str(getInc()) +' PLN', font=('Arial', 12))
+    totalIncValue.place(relx=0.52, rely=0.18)
+    
 
 def printBudget(frame):
     insideFrame = customtkinter.CTkFrame(frame, width=740, height=250, corner_radius=10)
@@ -135,12 +194,11 @@ def printBudget(frame):
 
     
 
-
-
-    for i in range(5):
-        textbox.insert(str(i) + '.0','\n')
-        for j in range(4):
-            textbox.insert(str(i) + '.' + str(j), 'Amount\t\t')
+    # for i in range(5):
+        # textbox.insert(str(i) + '.0', str(elements[i]) + '\n')
+        # textbox.insert(str(i) + '.0', resDict[i])
+        # for j in range(4):
+        #     textbox.insert(str(i) + '.' + str(j), 'Amount\t\t')
     
     # textbox.insert("0.0", "new text to insert")  # insert at line 0 character 0
     # text = textbox.get("0.0", "end")  # get text from line 0 character 0 till the end
