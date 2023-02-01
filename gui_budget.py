@@ -2,7 +2,7 @@ import tkinter
 import customtkinter
 import os
 import pandas as pd
-import pandastable
+from pandastable import Table
 
 
 
@@ -29,6 +29,11 @@ def saveToFile(line):
         # if not os.path.exists(filePath): os.makedirs(filePath)
         
         # filePath = filePath + '/logFinance' + str(thisMonth) + '.txt'
+
+        if line[0]=='' or line[2]=='':
+            if not line[3].isNumber() or line[3]=='':
+                print('Unable to save')
+                return
 
         if line[1] == '': line[1] = '-'
 
@@ -57,51 +62,54 @@ def saveToFile(line):
 
 def addLog(app):
     frame = customtkinter.CTkFrame(app, width=740, height=50, corner_radius=10)
-    frame.place(relx=0.02, rely=0.02)
-
-    
+    frame.place(relx=0.5, rely=0.07, anchor=tkinter.CENTER)
 
     shop = customtkinter.CTkEntry(frame, width=150, placeholder_text="Shop")
-    shop.place(relx=0.33, rely=0.47, anchor=tkinter.CENTER)
+    shop.place(relx=0.32, rely=0.5, anchor=tkinter.CENTER)
 
     title = customtkinter.CTkEntry(frame, width=150, placeholder_text="Title")
-    title.place(relx=0.53, rely=0.47, anchor=tkinter.CENTER)
+    title.place(relx=0.53, rely=0.5, anchor=tkinter.CENTER)
 
     amount = customtkinter.CTkEntry(frame, width=150, placeholder_text="Amount (float with '.')")
-    amount.place(relx=0.73, rely=0.47, anchor=tkinter.CENTER)
+    amount.place(relx=0.74, rely=0.5, anchor=tkinter.CENTER)
 
     typeVar = tkinter.StringVar()
     radiobutton_1 = customtkinter.CTkRadioButton(frame, text="Income", radiobutton_height=15, radiobutton_width=15, border_width_checked=5, width=30,
-                                                variable=typeVar, value='inc', command=lambda: shop.configure(state='disabled', fg_color='#191922'))
-    radiobutton_1.place(relx=0.13, rely=0.28)
+                                                variable=typeVar, value='inc', command=lambda: [shop.delete(0, 'end'), shop.configure(state='disabled', fg_color='#191922')])
+    radiobutton_1.place(relx=0.16, rely=0.5, anchor=tkinter.CENTER)
 
     radiobutton_2 = customtkinter.CTkRadioButton(frame, text="Expense", radiobutton_height=15, radiobutton_width=15, border_width_checked=5, width=30,
                                                 variable=typeVar, value='exp', command=lambda: shop.configure(state='normal', fg_color='#343638'))
-    radiobutton_2.place(relx=0.02, rely=0.28)
+    radiobutton_2.place(relx=0.06, rely=0.5, anchor=tkinter.CENTER)
         
-    button = customtkinter.CTkButton(frame, text='Save', width=100, command=lambda:
-                                    [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
-                                    shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end')])
-    button.place(relx=0.92, rely=0.47, anchor=tkinter.CENTER)
-
-    
-
-    printBudget(app)
     printTotals(app)
+    printBudget(app)
+
+    saveButton = customtkinter.CTkButton(frame, text='Save', width=100, command=lambda:
+                                [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
+                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end'),
+                                printTotals(app)])
+    
+    # def checkEntry():
+    #     if typeVar.get()=='' or shop.get()=='' or title.get()=='' or amount.get()=='': 
+    #         saveButton.configure(state='disabled')
+    #     else: 
+    #         saveButton.configure(state='normal')
+    saveButton.place(relx=0.92, rely=0.5, anchor=tkinter.CENTER)
+
 
 def printTotals(frame):
     totalsFrame = customtkinter.CTkFrame(frame, width=740, height=50, corner_radius=10)
-    totalsFrame.place(relx=0.02, rely=0.14)
+    totalsFrame.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
     
-
     expFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    expFrame.place(relx=0.03, rely=0.11)
+    expFrame.place(relx=0.2, rely=0.5, anchor=tkinter.CENTER)
 
     incFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    incFrame.place(relx=0.36, rely=0.11)
+    incFrame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
     balFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    balFrame.place(relx=0.69, rely=0.11)
+    balFrame.place(relx=0.8, rely=0.5, anchor=tkinter.CENTER)
 
     def getExp():
         filePath = 'logs.txt'
@@ -109,7 +117,6 @@ def printTotals(frame):
         with open(filePath, 'r', encoding='utf-8') as file:
             for line in file: frames.append(line.strip('\n'))
         elements = [i.split(',') for i in frames]
-
         totalExp = 0
         for i in elements:
             if i[0] == 'exp': totalExp += float(i[3])
@@ -121,47 +128,29 @@ def printTotals(frame):
         with open(filePath, 'r', encoding='utf-8') as file:
             for line in file: frames.append(line.strip('\n'))
         elements = [i.split(',') for i in frames]
-
         totalInc = 0
         for i in elements:
             if i[0] == 'inc': totalInc += float(i[3])
         return round(totalInc, 2)
-
-
+    
     titleFont = customtkinter.CTkFont(family='Arial', size=12, weight='bold')
     totalExpTitle = customtkinter.CTkLabel(expFrame, width=50, height=32, text='Total expense: ', font=titleFont)
-    totalExpTitle.place(relx=0.05, rely=0.15)
+    totalExpTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=str(getExp())+' PLN', font=('Arial', 12))
-    totalExpValue.place(relx=0.52, rely=0.18)
+    tev = customtkinter.StringVar(expFrame, value=str(getExp()))
+    totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=tev.get()+' PLN', font=('Arial', 12))
+    totalExpValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
     totalIncTitle = customtkinter.CTkLabel(incFrame, width=50, height=32, text='Total income: ', font=titleFont)
-    totalIncTitle.place(relx=0.05, rely=0.15)
+    totalIncTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=str(getInc()) +' PLN', font=('Arial', 12))
-    totalIncValue.place(relx=0.52, rely=0.18)
-    
+    tiv = customtkinter.StringVar(incFrame, value=str(getInc()))
+    totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=tiv.get()+' PLN', font=('Arial', 12))
+    totalIncValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
 def printBudget(frame):
     insideFrame = customtkinter.CTkFrame(frame, width=740, height=250, corner_radius=10)
     insideFrame.place(relx=0.02, rely=0.4)
-
-    textbox = customtkinter.CTkTextbox(insideFrame, width=600, height=200)
-    textbox.place(relx=0.02, rely=0.1)
-
-    # dic = {'name': 'jan pawel ii', 'date': '2137', 'real': 'karol wojtyla'}
-    # df = pd.DataFrame(dic)
-    # textbox.insert('0.3', 'Amount\t\t')
-    # textbox.insert('0.2', 'Title\t\t')
-    # textbox.insert('0.1', 'Shop\t\t')
-    # textbox.insert('0.0', 'Type\t\t')
-
-    # textbox.insert('1.3', '1000\t\t')
-    # textbox.insert('1.2', 'Wypłata\t\t')
-    # textbox.insert('1.1', '-\t\t')
-    # textbox.insert('1.0', 'inc\t\t')
-
-
 
     def addToDict(sample_dict, key, list_of_values):
         if key not in sample_dict.keys():
@@ -170,7 +159,6 @@ def printBudget(frame):
         return sample_dict
 
     filePath = 'logs.txt'
-
     frames = []
     with open(filePath, 'r', encoding='utf-8') as file:
         for line in file: frames.append(line.strip('\n'))
@@ -185,25 +173,11 @@ def printBudget(frame):
 
     resDict = {}
     for i in res:
-        addToDict(resDict, i[0], i[1:]) 
-
-    # print(resDict)
+        addToDict(resDict, i[0], i[1:])
     
     # df = pd.DataFrame(resDict)
-    # print(df)
-
-    
-
-    # for i in range(5):
-        # textbox.insert(str(i) + '.0', str(elements[i]) + '\n')
-        # textbox.insert(str(i) + '.0', resDict[i])
-        # for j in range(4):
-        #     textbox.insert(str(i) + '.' + str(j), 'Amount\t\t')
-    
-    # textbox.insert("0.0", "new text to insert")  # insert at line 0 character 0
-    # text = textbox.get("0.0", "end")  # get text from line 0 character 0 till the end
-
-    textbox.configure(state="disabled") 
+    # pt = Table(insideFrame, dataframe=df,showtoolbar=False, showstatusbar=False)
+    # pt.show()
 
 
 def main():

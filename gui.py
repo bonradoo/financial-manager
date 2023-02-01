@@ -35,7 +35,7 @@ def start():
     label = customtkinter.CTkLabel(app, text="Financial Tracker", font=('Athelas', 32))
     label.place(relx=0.5, rely=0.05, anchor=tkinter.CENTER)
 
-    budgetFrame = customtkinter.CTkFrame(app, width=770, height=500, corner_radius=10, fg_color='red')
+    budgetFrame = customtkinter.CTkFrame(app, width=770, height=500, corner_radius=10)
     gui_budget.addLog(budgetFrame)
 
     investFrame = customtkinter.CTkFrame(app, width=770, height=500, corner_radius=10, fg_color='blue')
@@ -46,7 +46,7 @@ def start():
             elif value=='Investements': investFrame.place(relx=0.017, rely=0.15), budgetFrame.place_forget()
 
         segmentedButton = customtkinter.CTkSegmentedButton(app, values=['Budget', 'Investements'], command=switchFrames)
-        segmentedButton.place(relx=0.4, rely=0.09)
+        segmentedButton.place(relx=0.5, rely=0.11, anchor=tkinter.CENTER)
 
     choice(app)
 
