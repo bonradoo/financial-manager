@@ -8,3 +8,7 @@ test.py
 requirements.txt
 bin/stock/logInvestement.txt
 logs.txt
+icon.ico
+icon.png
+venv
+output

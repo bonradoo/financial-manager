@@ -5,7 +5,6 @@ import pandas as pd
 from pandastable import Table
 
 
-
 def clearEntry(shop, title, amount):
     shop.delete()
     title.delete()
@@ -89,12 +88,7 @@ def addLog(app):
                                 [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
                                 shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end'),
                                 printTotals(app)])
-    
-    # def checkEntry():
-    #     if typeVar.get()=='' or shop.get()=='' or title.get()=='' or amount.get()=='': 
-    #         saveButton.configure(state='disabled')
-    #     else: 
-    #         saveButton.configure(state='normal')
+
     saveButton.place(relx=0.92, rely=0.5, anchor=tkinter.CENTER)
 
 
@@ -111,46 +105,46 @@ def printTotals(frame):
     balFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
     balFrame.place(relx=0.8, rely=0.5, anchor=tkinter.CENTER)
 
-    def getExp():
-        filePath = 'logs.txt'
-        frames = []
-        with open(filePath, 'r', encoding='utf-8') as file:
-            for line in file: frames.append(line.strip('\n'))
-        elements = [i.split(',') for i in frames]
-        totalExp = 0
-        for i in elements:
-            if i[0] == 'exp': totalExp += float(i[3])
-        return round(totalExp, 2)
+    filePath = 'logs.txt'
+    frames = []
+    with open(filePath, 'r', encoding='utf-8') as file:
+        for line in file: frames.append(line.strip('\n'))
+    elements = [i.split(',') for i in frames]
+    totalInc = 0
+    totalExp = 0
+    for i in elements:
+        if i[0] == 'inc': totalInc += float(i[3])
+        elif i[0] == 'exp': totalExp += float(i[3])
     
-    def getInc():
-        filePath = 'logs.txt'
-        frames = []
-        with open(filePath, 'r', encoding='utf-8') as file:
-            for line in file: frames.append(line.strip('\n'))
-        elements = [i.split(',') for i in frames]
-        totalInc = 0
-        for i in elements:
-            if i[0] == 'inc': totalInc += float(i[3])
-        return round(totalInc, 2)
-    
+    # Expense
     titleFont = customtkinter.CTkFont(family='Arial', size=12, weight='bold')
     totalExpTitle = customtkinter.CTkLabel(expFrame, width=50, height=32, text='Total expense: ', font=titleFont)
     totalExpTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tev = customtkinter.StringVar(expFrame, value=str(getExp()))
+    tev = customtkinter.StringVar(expFrame, value=str(totalExp))
     totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=tev.get()+' PLN', font=('Arial', 12))
     totalExpValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
+    # Income
     totalIncTitle = customtkinter.CTkLabel(incFrame, width=50, height=32, text='Total income: ', font=titleFont)
     totalIncTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tiv = customtkinter.StringVar(incFrame, value=str(getInc()))
+    tiv = customtkinter.StringVar(incFrame, value=str(totalInc))
     totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=tiv.get()+' PLN', font=('Arial', 12))
     totalIncValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
+    # Balance
+    totalBalTtile = customtkinter.CTkLabel(balFrame, width=50, height=32, text='Balance: ', font=titleFont)
+    totalBalTtile.place(relx=0.25, rely=0.5, anchor=tkinter.CENTER)
+
+    tbv = customtkinter.StringVar(balFrame, value=str(totalInc-totalExp))
+    totalBalValue = customtkinter.CTkLabel(balFrame, width=50, height=30, text=tbv.get()+' PLN', font=('Arial', 12))
+    totalBalValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
+
+
 def printBudget(frame):
-    insideFrame = customtkinter.CTkFrame(frame, width=740, height=250, corner_radius=10)
-    insideFrame.place(relx=0.02, rely=0.4)
+    insideFrame = customtkinter.CTkFrame(frame, width=740, height=350, corner_radius=10)
+    insideFrame.place(relx=0.5, rely=0.62, anchor=tkinter.CENTER)
 
     def addToDict(sample_dict, key, list_of_values):
         if key not in sample_dict.keys():
