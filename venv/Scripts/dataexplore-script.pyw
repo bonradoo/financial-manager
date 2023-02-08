@@ -1,4 +1,4 @@
-#!E:\Pliki\Programowanie\Python\financial-tracker\venv\Scripts\pythonw.exe
+#!C:\Users\konra\Desktop\Programowanie\Python\financial-tracker\venv\Scripts\pythonw.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pandastable==0.13.0','gui_scripts','dataexplore'
 import re
 import sys

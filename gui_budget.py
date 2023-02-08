@@ -3,6 +3,7 @@ import customtkinter
 import os
 import pandas as pd
 from pandastable import Table
+from datetime import date
 
 
 def clearEntry(shop, title, amount):
@@ -60,50 +61,70 @@ def saveToFile(line):
 
 
 def addLog(app):
-    frame = customtkinter.CTkFrame(app, width=740, height=50, corner_radius=10)
-    frame.place(relx=0.5, rely=0.07, anchor=tkinter.CENTER)
+    frame = customtkinter.CTkFrame(app, width=250, height=490, corner_radius=10)
+    frame.place(relx=0.135, rely=0.5, anchor=tkinter.CENTER)
 
-    shop = customtkinter.CTkEntry(frame, width=150, placeholder_text="Shop")
-    shop.place(relx=0.32, rely=0.5, anchor=tkinter.CENTER)
+    thisMonth = date.today().strftime('%B')
+    thisYear = date.today().strftime('%Y')
+    filePath = './test/'
 
-    title = customtkinter.CTkEntry(frame, width=150, placeholder_text="Title")
-    title.place(relx=0.53, rely=0.5, anchor=tkinter.CENTER)
+    yearArr = [os.listdir(filePath)[i] for i in range(len(os.listdir(filePath)))]
+    yearVal = customtkinter.StringVar(value=thisYear)
+    yearCombo = customtkinter.CTkComboBox(frame, values=yearArr, width=230, height=50, corner_radius=10, variable=yearVal)
+    yearCombo.place(relx=0.5, rely=0.08, anchor=tkinter.CENTER)
 
-    amount = customtkinter.CTkEntry(frame, width=150, placeholder_text="Amount (float with '.')")
-    amount.place(relx=0.74, rely=0.5, anchor=tkinter.CENTER)
+    filePath += yearVal.get()
+    monthArr = [str(n+1) + '. ' + os.listdir(filePath)[n] for n in range(len(os.listdir(filePath)))]
+    monthVal = customtkinter.StringVar(value=thisMonth)
+    monthCombo = customtkinter.CTkComboBox(frame, values=monthArr, width=230, height=50, corner_radius=10, variable=monthVal)
+    monthCombo.place(relx=0.5, rely=0.22, anchor=tkinter.CENTER)
+
+    shop = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Shop")
+    shop.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+
+    title = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Title")
+    title.place(relx=0.5, rely=0.64, anchor=tkinter.CENTER)
+
+    amount = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Amount (float with '.')")
+    amount.place(relx=0.5, rely=0.78, anchor=tkinter.CENTER)
 
     typeVar = tkinter.StringVar()
-    radiobutton_1 = customtkinter.CTkRadioButton(frame, text="Income", radiobutton_height=15, radiobutton_width=15, border_width_checked=5, width=30,
-                                                variable=typeVar, value='inc', command=lambda: [shop.delete(0, 'end'), shop.configure(state='disabled', fg_color='#191922')])
-    radiobutton_1.place(relx=0.16, rely=0.5, anchor=tkinter.CENTER)
+    def segChoice(value):
+        if value == '        Income       ': 
+            shop.delete(0, 'end')
+            shop.configure(state='disabled', fg_color='#191922', placeholder_text='')
+            typeVar.set('inc')
+        elif value == '       Expense        ': 
+            shop.configure(state='normal', fg_color='#343638', placeholder_text='Shop')
+            typeVar.set('exp')
 
-    radiobutton_2 = customtkinter.CTkRadioButton(frame, text="Expense", radiobutton_height=15, radiobutton_width=15, border_width_checked=5, width=30,
-                                                variable=typeVar, value='exp', command=lambda: shop.configure(state='normal', fg_color='#343638'))
-    radiobutton_2.place(relx=0.06, rely=0.5, anchor=tkinter.CENTER)
-        
-    printTotals(app)
-    printBudget(app)
+    segmentedButton = customtkinter.CTkSegmentedButton(frame, values=['        Income       ', '       Expense        '], width=230, height=50, corner_radius=10, command=segChoice)
+    segmentedButton.set('Expense')
+    segmentedButton.place(relx=0.5, rely=0.36, anchor=tkinter.CENTER)
 
-    saveButton = customtkinter.CTkButton(frame, text='Save', width=100, command=lambda:
+
+    
+    summaryFrame = customtkinter.CTkFrame(app, width=710, height=490, corner_radius=10)
+    summaryFrame.place(relx=0.63, rely=0.5, anchor=tkinter.CENTER)
+    printTotals(summaryFrame)
+    printBudget(summaryFrame)
+
+    saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=lambda:
                                 [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
-                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end'),
-                                printTotals(app)])
+                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end')])
 
-    saveButton.place(relx=0.92, rely=0.5, anchor=tkinter.CENTER)
+    saveButton.place(relx=0.5, rely=0.92, anchor=tkinter.CENTER)
 
 
 def printTotals(frame):
-    totalsFrame = customtkinter.CTkFrame(frame, width=740, height=50, corner_radius=10)
-    totalsFrame.place(relx=0.5, rely=0.2, anchor=tkinter.CENTER)
-    
-    expFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    expFrame.place(relx=0.2, rely=0.5, anchor=tkinter.CENTER)
+    expFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
+    expFrame.place(relx=0.172, rely=0.08, anchor=tkinter.CENTER)
 
-    incFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    incFrame.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    incFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
+    incFrame.place(relx=0.499, rely=0.08, anchor=tkinter.CENTER)
 
-    balFrame = customtkinter.CTkFrame(totalsFrame, width=200, height=40, corner_radius=10)
-    balFrame.place(relx=0.8, rely=0.5, anchor=tkinter.CENTER)
+    balFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
+    balFrame.place(relx=0.826, rely=0.08, anchor=tkinter.CENTER)
 
     filePath = 'logs.txt'
     frames = []
@@ -141,11 +162,11 @@ def printTotals(frame):
     totalBalValue = customtkinter.CTkLabel(balFrame, width=50, height=30, text=tbv.get()+' PLN', font=('Arial', 12))
     totalBalValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
+    
+
+
 
 def printBudget(frame):
-    insideFrame = customtkinter.CTkFrame(frame, width=740, height=350, corner_radius=10)
-    insideFrame.place(relx=0.5, rely=0.62, anchor=tkinter.CENTER)
-
     def addToDict(sample_dict, key, list_of_values):
         if key not in sample_dict.keys():
             sample_dict[key] = list()
@@ -170,7 +191,7 @@ def printBudget(frame):
         addToDict(resDict, i[0], i[1:])
     
     # df = pd.DataFrame(resDict)
-    # pt = Table(insideFrame, dataframe=df,showtoolbar=False, showstatusbar=False)
+    # pt = Table(frame, dataframe=df,showtoolbar=False, showstatusbar=False)
     # pt.show()
 
 

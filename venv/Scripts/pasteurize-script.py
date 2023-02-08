@@ -1,4 +1,4 @@
-#!E:\Pliki\Programowanie\Python\financial-tracker\venv\Scripts\python.exe
+#!C:\Users\konra\Desktop\Programowanie\Python\financial-tracker\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'future==0.18.3','console_scripts','pasteurize'
 import re
 import sys
