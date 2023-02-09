@@ -1,0 +1,4 @@
+Type,Place,Title,Amount
+inc,-,Scholarship,1500
+inc,-,ScholarShip,1000
+exp,Amazon,Amazon,1200.10

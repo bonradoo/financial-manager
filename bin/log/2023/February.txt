@@ -1,0 +1,3 @@
+Type,Shop,Title,Amount
+exp,Biedronka,Food,24.99
+inc,-,For life,1600

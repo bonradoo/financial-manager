@@ -3,8 +3,9 @@ import customtkinter
 import os
 import pandas as pd
 from pandastable import Table
-from datetime import date
+from datetime import datetime, date, timedelta
 
+filePath = './bin/log/'
 
 def clearEntry(shop, title, amount):
     shop.delete()
@@ -22,13 +23,13 @@ def isNumber(num):
 
 def saveToFile(line):
     try:
-        # thisMonth = date.today().strftime('%B')
-        # thisYear = date.today().strftime('%Y')
+        thisMonth = date.today().strftime('%B')
+        thisYear = date.today().strftime('%Y')
 
-        # filePath = './bin/log/' + str(thisYear)
-        # if not os.path.exists(filePath): os.makedirs(filePath)
+        filePath = './bin/log/' + str(thisYear)
+        if not os.path.exists(filePath): os.makedirs(filePath)
         
-        # filePath = filePath + '/logFinance' + str(thisMonth) + '.txt'
+        filePath = filePath + '/' + str(thisMonth) + '.txt'
 
         if line[0]=='' or line[2]=='':
             if not line[3].isNumber() or line[3]=='':
@@ -37,7 +38,8 @@ def saveToFile(line):
 
         if line[1] == '': line[1] = '-'
 
-        filePath = 'logs.txt'   #for testing purpose
+        # print(line)
+        # print(filePath)
         if not os.path.exists(filePath): 
             with open(filePath, 'w') as f: 
                 f.write('Type,Shop,Title,Amount\n')
@@ -60,24 +62,71 @@ def saveToFile(line):
         print('Error occured while saving the file')
 
 
+def createFiles():
+    thisYear = date.today().year
+    filePath = './bin/log/' + str(thisYear)
+    if not os.path.exists(filePath):
+        os.makedirs(filePath)
+    today = date.today()
+    lastDayMonth = (date(today.year, today.month, 1) + timedelta(days=32) - timedelta(days=1)).day
+    for day in range(1, lastDayMonth + 1):
+        current_date = date(today.year, today.month, day)
+        file_name = current_date.strftime('%B') + '.txt'
+        fp = os.path.join(filePath, file_name)
+        
+        # Check if file for the current month already exists
+        if not os.path.exists(fp):
+            with open(fp, 'w') as file:
+                file.write('Type,Shop,Title,Amount\n')
+
+
+
 def addLog(app):
+    createFiles()
+
+    # creating frames
     frame = customtkinter.CTkFrame(app, width=250, height=490, corner_radius=10)
     frame.place(relx=0.135, rely=0.5, anchor=tkinter.CENTER)
 
-    thisMonth = date.today().strftime('%B')
-    thisYear = date.today().strftime('%Y')
-    filePath = './test/'
+    summaryFrame = customtkinter.CTkFrame(app, width=710, height=490, corner_radius=10)
+    summaryFrame.place(relx=0.63, rely=0.5, anchor=tkinter.CENTER)
 
-    yearArr = [os.listdir(filePath)[i] for i in range(len(os.listdir(filePath)))]
-    yearVal = customtkinter.StringVar(value=thisYear)
-    yearCombo = customtkinter.CTkComboBox(frame, values=yearArr, width=230, height=50, corner_radius=10, variable=yearVal)
+
+    def getYear():
+        return [os.listdir(filePath)[i] for i in range(len(os.listdir(filePath)))]
+    def getMonth():
+        return [os.listdir(filePath)[i] for i in range(len(os.listdir(filePath)))]
+    
+    def yearChoice(event):
+        global filePath
+        filePath = './bin/log/'
+        filePath += yearVal.get() + '/'
+        # print(filePath)
+
+    def monthChoice():
+        global filePath
+        embFP = filePath
+        embFP += monthVal.get()
+        printTotals(summaryFrame, embFP)
+        
+
+
+    yearVal = customtkinter.StringVar(value=getYear()[0])
+    monthVal = customtkinter.StringVar(value='Month')
+
+
+    yearCombo = customtkinter.CTkComboBox(frame, values=getYear(), width=230, height=50, corner_radius=10, variable=yearVal, state='readonly',
+                                        command=lambda event: [yearChoice(event), unlockMonth(event)])
+    monthCombo = customtkinter.CTkComboBox(frame, values=getMonth(), width=230, height=50, corner_radius=10, variable=monthVal, state='disabled',
+                                        command=lambda event: [monthChoice()])
+
     yearCombo.place(relx=0.5, rely=0.08, anchor=tkinter.CENTER)
-
-    filePath += yearVal.get()
-    monthArr = [str(n+1) + '. ' + os.listdir(filePath)[n] for n in range(len(os.listdir(filePath)))]
-    monthVal = customtkinter.StringVar(value=thisMonth)
-    monthCombo = customtkinter.CTkComboBox(frame, values=monthArr, width=230, height=50, corner_radius=10, variable=monthVal)
     monthCombo.place(relx=0.5, rely=0.22, anchor=tkinter.CENTER)
+
+    def unlockMonth(event):
+        # print(filePath)
+        monthCombo.configure(state='readonly', values=getMonth())
+        monthCombo.set(getMonth()[0])
 
     shop = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Shop")
     shop.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
@@ -103,20 +152,17 @@ def addLog(app):
     segmentedButton.place(relx=0.5, rely=0.36, anchor=tkinter.CENTER)
 
 
-    
-    summaryFrame = customtkinter.CTkFrame(app, width=710, height=490, corner_radius=10)
-    summaryFrame.place(relx=0.63, rely=0.5, anchor=tkinter.CENTER)
-    printTotals(summaryFrame)
     printBudget(summaryFrame)
 
     saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=lambda:
                                 [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
-                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end')])
+                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end'),
+                                printTotals(summaryFrame, filePath + monthVal.get()), shop.icursor()])
 
     saveButton.place(relx=0.5, rely=0.92, anchor=tkinter.CENTER)
 
 
-def printTotals(frame):
+def printTotals(frame, embFP):
     expFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
     expFrame.place(relx=0.172, rely=0.08, anchor=tkinter.CENTER)
 
@@ -126,10 +172,12 @@ def printTotals(frame):
     balFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
     balFrame.place(relx=0.826, rely=0.08, anchor=tkinter.CENTER)
 
-    filePath = 'logs.txt'
+    print(embFP)
+    with open(embFP, 'r') as file:
+        data = file.readlines()
+
     frames = []
-    with open(filePath, 'r', encoding='utf-8') as file:
-        for line in file: frames.append(line.strip('\n'))
+    for line in data: frames.append(line.strip('\n'))
     elements = [i.split(',') for i in frames]
     totalInc = 0
     totalExp = 0
@@ -142,7 +190,7 @@ def printTotals(frame):
     totalExpTitle = customtkinter.CTkLabel(expFrame, width=50, height=32, text='Total expense: ', font=titleFont)
     totalExpTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tev = customtkinter.StringVar(expFrame, value=str(totalExp))
+    tev = customtkinter.StringVar(expFrame, value=str(round(totalExp, 2)))
     totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=tev.get()+' PLN', font=('Arial', 12))
     totalExpValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
@@ -150,7 +198,7 @@ def printTotals(frame):
     totalIncTitle = customtkinter.CTkLabel(incFrame, width=50, height=32, text='Total income: ', font=titleFont)
     totalIncTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tiv = customtkinter.StringVar(incFrame, value=str(totalInc))
+    tiv = customtkinter.StringVar(incFrame, value=str(round(totalInc, 2)))
     totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=tiv.get()+' PLN', font=('Arial', 12))
     totalIncValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
@@ -158,7 +206,7 @@ def printTotals(frame):
     totalBalTtile = customtkinter.CTkLabel(balFrame, width=50, height=32, text='Balance: ', font=titleFont)
     totalBalTtile.place(relx=0.25, rely=0.5, anchor=tkinter.CENTER)
 
-    tbv = customtkinter.StringVar(balFrame, value=str(totalInc-totalExp))
+    tbv = customtkinter.StringVar(balFrame, value=str(round(float(totalInc-totalExp), 2)))
     totalBalValue = customtkinter.CTkLabel(balFrame, width=50, height=30, text=tbv.get()+' PLN', font=('Arial', 12))
     totalBalValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
