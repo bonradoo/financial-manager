@@ -101,7 +101,6 @@ def addLog(app):
         global filePath
         filePath = './bin/log/'
         filePath += yearVal.get() + '/'
-        # print(filePath)
 
     def monthChoice():
         global filePath
@@ -153,44 +152,56 @@ def addLog(app):
 
 
     printBudget(summaryFrame)
+    
+    # def enterAction(event):
+    #     saveAction()
+    #     print('1')
 
-    saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=lambda:
-                                [saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()]), 
-                                shop.delete(0, 'end'), title.delete(0, 'end'), amount.delete(0, 'end'),
-                                printTotals(summaryFrame, filePath + monthVal.get()), shop.icursor()])
-
+    def saveAction():
+        saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()])
+        shop.delete(0, 'end')
+        title.delete(0, 'end')
+        amount.delete(0, 'end')
+        printTotals(summaryFrame,filePath + monthVal.get())
+        shop.focus()
+        print('2')
+    
+    saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=saveAction)
     saveButton.place(relx=0.5, rely=0.92, anchor=tkinter.CENTER)
-
+    # saveButton.bind('<Return>', enterAction)
 
 def printTotals(frame, embFP):
     expFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
-    expFrame.place(relx=0.172, rely=0.08, anchor=tkinter.CENTER)
+    expFrame.place(relx=0.172, rely=0.07, anchor=tkinter.CENTER)
 
     incFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
-    incFrame.place(relx=0.499, rely=0.08, anchor=tkinter.CENTER)
+    incFrame.place(relx=0.499, rely=0.07, anchor=tkinter.CENTER)
 
     balFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
-    balFrame.place(relx=0.826, rely=0.08, anchor=tkinter.CENTER)
+    balFrame.place(relx=0.826, rely=0.07, anchor=tkinter.CENTER)
 
-    print(embFP)
-    with open(embFP, 'r') as file:
+    with open(embFP, 'r', encoding='utf-8') as file:
         data = file.readlines()
 
     frames = []
     for line in data: frames.append(line.strip('\n'))
     elements = [i.split(',') for i in frames]
-    totalInc = 0
-    totalExp = 0
+    totalInc = 0.00
+    totalExp = 0.00
     for i in elements:
-        if i[0] == 'inc': totalInc += float(i[3])
-        elif i[0] == 'exp': totalExp += float(i[3])
+        if i[0] == 'inc': 
+            totalInc += float(i[3])
+            totalInc = round(totalInc, 2)
+        elif i[0] == 'exp': 
+            totalExp += float(i[3])
+            totalExp = round(totalExp, 2)
     
     # Expense
     titleFont = customtkinter.CTkFont(family='Arial', size=12, weight='bold')
     totalExpTitle = customtkinter.CTkLabel(expFrame, width=50, height=32, text='Total expense: ', font=titleFont)
     totalExpTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tev = customtkinter.StringVar(expFrame, value=str(round(totalExp, 2)))
+    tev = customtkinter.StringVar(expFrame, value=str(round(totalExp, 3)))
     totalExpValue = customtkinter.CTkLabel(expFrame, width=50, height=30, text=tev.get()+' PLN', font=('Arial', 12))
     totalExpValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
@@ -198,7 +209,7 @@ def printTotals(frame, embFP):
     totalIncTitle = customtkinter.CTkLabel(incFrame, width=50, height=32, text='Total income: ', font=titleFont)
     totalIncTitle.place(relx=0.3, rely=0.5, anchor=tkinter.CENTER)
 
-    tiv = customtkinter.StringVar(incFrame, value=str(round(totalInc, 2)))
+    tiv = customtkinter.StringVar(incFrame, value=str(round(totalInc, 3)))
     totalIncValue = customtkinter.CTkLabel(incFrame, width=50, height=30, text=tiv.get()+' PLN', font=('Arial', 12))
     totalIncValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
@@ -206,11 +217,9 @@ def printTotals(frame, embFP):
     totalBalTtile = customtkinter.CTkLabel(balFrame, width=50, height=32, text='Balance: ', font=titleFont)
     totalBalTtile.place(relx=0.25, rely=0.5, anchor=tkinter.CENTER)
 
-    tbv = customtkinter.StringVar(balFrame, value=str(round(float(totalInc-totalExp), 2)))
+    tbv = customtkinter.StringVar(balFrame, value=str(round(float(totalInc-totalExp), 3)))
     totalBalValue = customtkinter.CTkLabel(balFrame, width=50, height=30, text=tbv.get()+' PLN', font=('Arial', 12))
     totalBalValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
-
-    
 
 
 

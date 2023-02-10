@@ -1,3 +1,6 @@
 Type,Shop,Title,Amount
 exp,Biedronka,Food,24.99
 inc,-,For life,1600
+exp,Przybij piątaka,Piwo,14
+inc,-,Kaska,0.99
+exp,13 Igieł,Piwo,14.12
