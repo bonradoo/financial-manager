@@ -1,18 +1,18 @@
 import tkinter
 import customtkinter
 import os
-import pandas as pd
-from pandastable import Table
-from datetime import datetime, date, timedelta
+from datetime import date, timedelta
 
+# Main file path
 filePath = './bin/log/'
 
+# Function clearing entries
 def clearEntry(shop, title, amount):
     shop.delete()
     title.delete()
     amount.delete()
 
-
+# Function checking if provided number is float
 def isNumber(num):
     try:
         float(num)
@@ -20,48 +20,44 @@ def isNumber(num):
     except ValueError:
         return False
     
-
+# Function Saving to file
 def saveToFile(line):
     try:
+        # File path config
         thisMonth = date.today().strftime('%B')
         thisYear = date.today().strftime('%Y')
-
         filePath = './bin/log/' + str(thisYear)
         if not os.path.exists(filePath): os.makedirs(filePath)
-        
         filePath = filePath + '/' + str(thisMonth) + '.txt'
 
+        # Checking formatting
         if line[0]=='' or line[2]=='':
             if not line[3].isNumber() or line[3]=='':
                 print('Unable to save')
                 return
-
         if line[1] == '': line[1] = '-'
 
-        # print(line)
-        # print(filePath)
+        # Checking if file exists
         if not os.path.exists(filePath): 
             with open(filePath, 'w') as f: 
                 f.write('Type,Shop,Title,Amount\n')
 
+        # Checking if file has heading
         with open(filePath, 'r') as f:
-            if f.readline() == 'Type,Shop,Title,Amount\n':
-                hasHeading = True
-            else:
-                print('No header')
-                hasHeading = False
+            if f.readline() == 'Type,Shop,Title,Amount\n': hasHeading = True
+            else: hasHeading = False
 
         with open(filePath, 'a', encoding='utf-8') as f:
             if hasHeading:
                 f.write(','.join(line) + '\n')
             else:
                 f.write('Type,Shop,Title,Amount\n')
-                f.write(','.join(line) + '\n')
-            
+                f.write(','.join(line) + '\n')   
     except:
         print('Error occured while saving the file')
 
 
+# Create files depending on current year and month
 def createFiles():
     thisYear = date.today().year
     filePath = './bin/log/' + str(thisYear)
@@ -80,17 +76,17 @@ def createFiles():
                 file.write('Type,Shop,Title,Amount\n')
 
 
-
+# Main budget frame
 def addLog(app):
     createFiles()
 
     # creating frames
     frame = customtkinter.CTkFrame(app, width=250, height=490, corner_radius=10)
-    frame.place(relx=0.135, rely=0.5, anchor=tkinter.CENTER)
-
     summaryFrame = customtkinter.CTkFrame(app, width=710, height=490, corner_radius=10)
-    summaryFrame.place(relx=0.63, rely=0.5, anchor=tkinter.CENTER)
 
+    # Placing frames
+    frame.place(relx=0.135, rely=0.5, anchor=tkinter.CENTER)
+    summaryFrame.place(relx=0.63, rely=0.5, anchor=tkinter.CENTER)
 
     def getYear():
         return [os.listdir(filePath)[i] for i in range(len(os.listdir(filePath)))]
@@ -109,32 +105,32 @@ def addLog(app):
         printTotals(summaryFrame, embFP)
         
 
-
+    # Creating CTk assets
     yearVal = customtkinter.StringVar(value=getYear()[0])
     monthVal = customtkinter.StringVar(value='Month')
-
-
     yearCombo = customtkinter.CTkComboBox(frame, values=getYear(), width=230, height=50, corner_radius=10, variable=yearVal, state='readonly',
                                         command=lambda event: [yearChoice(event), unlockMonth(event)])
     monthCombo = customtkinter.CTkComboBox(frame, values=getMonth(), width=230, height=50, corner_radius=10, variable=monthVal, state='disabled',
                                         command=lambda event: [monthChoice()])
 
+    # Placing CTk assets
     yearCombo.place(relx=0.5, rely=0.08, anchor=tkinter.CENTER)
     monthCombo.place(relx=0.5, rely=0.22, anchor=tkinter.CENTER)
 
+    # Function for unlocking month choice
     def unlockMonth(event):
-        # print(filePath)
         monthCombo.configure(state='readonly', values=getMonth())
         monthCombo.set(getMonth()[0])
 
+    # Creating CTk entries
     shop = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Shop")
-    shop.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-
     title = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Title")
-    title.place(relx=0.5, rely=0.64, anchor=tkinter.CENTER)
-
     amount = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Amount (float with '.')")
+
+    # Placing CTk entries
     amount.place(relx=0.5, rely=0.78, anchor=tkinter.CENTER)
+    shop.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    title.place(relx=0.5, rely=0.64, anchor=tkinter.CENTER)
 
     typeVar = tkinter.StringVar()
     def segChoice(value):
@@ -152,11 +148,8 @@ def addLog(app):
 
 
     printBudget(summaryFrame)
-    
-    # def enterAction(event):
-    #     saveAction()
-    #     print('1')
 
+    # Save button action
     def saveAction():
         saveToFile([typeVar.get(), shop.get(), title.get(), amount.get()])
         shop.delete(0, 'end')
@@ -168,21 +161,23 @@ def addLog(app):
     
     saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=saveAction)
     saveButton.place(relx=0.5, rely=0.92, anchor=tkinter.CENTER)
-    # saveButton.bind('<Return>', enterAction)
 
+
+# Function for totals
 def printTotals(frame, embFP):
+    # Creating totals CTk frames
     expFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
-    expFrame.place(relx=0.172, rely=0.07, anchor=tkinter.CENTER)
-
     incFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
-    incFrame.place(relx=0.499, rely=0.07, anchor=tkinter.CENTER)
-
     balFrame = customtkinter.CTkFrame(frame, width=220, height=50, corner_radius=10)
+
+    # Placing totals CTk frames
+    expFrame.place(relx=0.172, rely=0.07, anchor=tkinter.CENTER)
+    incFrame.place(relx=0.499, rely=0.07, anchor=tkinter.CENTER)
     balFrame.place(relx=0.826, rely=0.07, anchor=tkinter.CENTER)
 
+    # Calculate totals
     with open(embFP, 'r', encoding='utf-8') as file:
         data = file.readlines()
-
     frames = []
     for line in data: frames.append(line.strip('\n'))
     elements = [i.split(',') for i in frames]
@@ -222,7 +217,7 @@ def printTotals(frame, embFP):
     totalBalValue.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
 
 
-
+# Fuction that prints table of expenses and income
 def printBudget(frame):
     def addToDict(sample_dict, key, list_of_values):
         if key not in sample_dict.keys():
@@ -246,14 +241,6 @@ def printBudget(frame):
     resDict = {}
     for i in res:
         addToDict(resDict, i[0], i[1:])
-    
-    # df = pd.DataFrame(resDict)
-    # pt = Table(frame, dataframe=df,showtoolbar=False, showstatusbar=False)
-    # pt.show()
-
-
-def main():
-    pass
 
 if __name__ == '__main__':
-    main()
+    pass
