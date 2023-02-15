@@ -6,16 +6,26 @@ import gui_budget, gui_invest, gui_login
 def run(app):
     # Create budget module frame
     budgetFrame = customtkinter.CTkFrame(app, width=980, height=500, corner_radius=10)
-    gui_budget.addLog(budgetFrame)
 
     # Create investement module frame
     investFrame = customtkinter.CTkFrame(app, width=980, height=500, corner_radius=10)
 
+    # Create a quit button
+    quitButton = customtkinter.CTkButton(app, text='Exit ⭕', command=app.destroy, width=32, height=32, fg_color='transparent', hover_color='red')
+    quitButton.place(relx=0.95, rely=0.05, anchor=customtkinter.CENTER)
+
     # Function responsible for changing modules
     def choice(app):
         def switchFrames(value):
-            if value=='Budget': budgetFrame.place(relx=0.5, rely=0.57, anchor=tkinter.CENTER), investFrame.place_forget()
-            elif value=='Investements': investFrame.place(relx=0.5, rely=0.57, anchor=tkinter.CENTER), budgetFrame.place_forget()
+            if value=='Budget': 
+                budgetFrame.place(relx=0.5, rely=0.57, anchor=tkinter.CENTER)
+                investFrame.place_forget()
+                for widget in investFrame.winfo_children(): widget.destroy()
+                gui_budget.addLog(budgetFrame)
+            elif value=='Investements': 
+                investFrame.place(relx=0.5, rely=0.57, anchor=tkinter.CENTER)
+                budgetFrame.place_forget()
+                for widget in budgetFrame.winfo_children(): widget.destroy()
 
         segmentedButton = customtkinter.CTkSegmentedButton(app, values=['Budget', 'Investements'], command=switchFrames)
         segmentedButton.place(relx=0.5, rely=0.11, anchor=tkinter.CENTER)

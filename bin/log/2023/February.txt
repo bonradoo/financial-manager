@@ -1,7 +1,5 @@
-Type,Shop,Title,Amount
-exp,Biedronka,Food,24.99
+Type,Place,Title,Amount
 inc,-,For life,1600
-exp,Przybij piątaka,Piwo,14
-inc,-,Kaska,0.99
-exp,13 Igieł,Piwo,14.12
-exp,Biedronka,Jedzenie,12.56
+inc,Dom,Od Błażeja,150
+exp,Test,123,123
+inc,Czarny,Od błażeja,500
