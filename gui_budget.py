@@ -4,7 +4,6 @@ import os
 from datetime import date, timedelta
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from collections import defaultdict
 
 # Main file path
 filePath = './bin/log/'
@@ -331,12 +330,12 @@ def printBudget(recordsFrame, graphFrame, embFP):
     titles = [name for name, value in result.items()]
     values = [value for name, value in result.items()]
 
-    figure = plt.Figure(figsize=(4, 4), dpi=100)
+    figure = plt.Figure(figsize=(1, 1), dpi=100)
     figure, ax = plt.subplots()
-    ax.pie(values, labels=titles, autopct='%1.1f%%')
+    ax.pie(values, labels=titles, autopct='%0.1f%%')
     bar1 = FigureCanvasTkAgg(figure, graphFrame)
     bar1.get_tk_widget().place(relx=0.5, rely=0.55, anchor=tkinter.CENTER)
-    
+  
 
 if __name__ == '__main__':
     pass

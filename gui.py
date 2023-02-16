@@ -1,6 +1,7 @@
 import tkinter
 import customtkinter
 import gui_budget, gui_invest, gui_login
+import os
 
 
 def run(app):
@@ -11,8 +12,8 @@ def run(app):
     investFrame = customtkinter.CTkFrame(app, width=980, height=500, corner_radius=10)
 
     # Create a quit button
-    quitButton = customtkinter.CTkButton(app, text='Exit ⭕', command=app.destroy, width=32, height=32, fg_color='transparent', hover_color='red')
-    quitButton.place(relx=0.95, rely=0.05, anchor=customtkinter.CENTER)
+    # quitButton = customtkinter.CTkButton(app, text='Exit ⭕', command=lambda event: [app.destroy, exit], width=32, height=32, fg_color='transparent', hover_color='red')
+    # quitButton.place(relx=0.95, rely=0.05, anchor=customtkinter.CENTER)
 
     # Function responsible for changing modules
     def choice(app):
@@ -50,6 +51,14 @@ def start():
 
     # Run main function
     run(app)
+
+    # App quit function for protocol
+    def appQuit():
+        for after_id in app.eval('after info').split():
+            app.after_cancel(after_id)
+        app.destroy()
+        exit()
+    app.protocol('WM_DELETE_WINDOW', appQuit)
 
     # Mainloop for the app
     app.mainloop()
