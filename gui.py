@@ -12,7 +12,7 @@ def run(app):
     investFrame = customtkinter.CTkFrame(app, width=980, height=500, corner_radius=10)
 
     # Create a quit button
-    # quitButton = customtkinter.CTkButton(app, text='Exit ⭕', command=lambda event: [app.destroy, exit], width=32, height=32, fg_color='transparent', hover_color='red')
+    # quitButton = customtkinter.CTkButton(app, text='Exit ⭕', command=lambda event: [app.quit, app.destroy, exit], width=32, height=32, fg_color='transparent', hover_color='red')
     # quitButton.place(relx=0.95, rely=0.05, anchor=customtkinter.CENTER)
 
     # Function responsible for changing modules
@@ -56,6 +56,7 @@ def start():
     def appQuit():
         for after_id in app.eval('after info').split():
             app.after_cancel(after_id)
+        app.quit()
         app.destroy()
         exit()
     app.protocol('WM_DELETE_WINDOW', appQuit)

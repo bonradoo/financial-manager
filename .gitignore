@@ -6,10 +6,11 @@ __pycache__
 exmp.csv
 test.py
 requirements.txt
-bin/stock/logInvestement.txt
 logs.txt
 icon.ico
 icon.png
 output
 test
 test2.py
+venv
+pyvenv.cfg

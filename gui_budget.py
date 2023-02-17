@@ -236,8 +236,8 @@ def printBudget(recordsFrame, graphFrame, embFP):
     graphFrame.place_forget()
 
     # Placing frames
-    recordsFrame.place(relx=0.743, rely=0.56, anchor=tkinter.CENTER)
-    graphFrame.place(relx=0.25, rely=0.56, anchor=tkinter.CENTER)
+    recordsFrame.place(relx=0.743, rely=0.56, anchor=customtkinter.CENTER)
+    graphFrame.place(relx=0.25, rely=0.56, anchor=customtkinter.CENTER)
 
     # Clearing prexisting widgets
     for widgets in recordsFrame.winfo_children(): widgets.destroy()
@@ -259,9 +259,9 @@ def printBudget(recordsFrame, graphFrame, embFP):
     
     
     # Placing CTk assets inside title frame
-    placeLabel.place(relx=0.15, rely=0.5, anchor=tkinter.CENTER)
-    titleLabel.place(relx=0.45, rely=0.5, anchor=tkinter.CENTER)
-    amountLabel.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
+    placeLabel.place(relx=0.15, rely=0.5, anchor=customtkinter.CENTER)
+    titleLabel.place(relx=0.45, rely=0.5, anchor=customtkinter.CENTER)
+    amountLabel.place(relx=0.75, rely=0.5, anchor=customtkinter.CENTER)
 
     # Packing title frame
     titleFrame.pack()
@@ -300,10 +300,10 @@ def printBudget(recordsFrame, graphFrame, embFP):
         delButton = customtkinter.CTkButton(record, text='❌', width=24, height=24, fg_color='transparent', hover_color='red', command=deleteRecord)
 
         # Placing record elements
-        plaL.place(relx=0.15, rely=0.5, anchor=tkinter.CENTER)
-        titL.place(relx=0.45, rely=0.5, anchor=tkinter.CENTER)
-        amtL.place(relx=0.75, rely=0.5, anchor=tkinter.CENTER)
-        delButton.place(relx=0.92, rely=0.5, anchor=tkinter.CENTER)
+        plaL.place(relx=0.15, rely=0.5, anchor=customtkinter.CENTER)
+        titL.place(relx=0.45, rely=0.5, anchor=customtkinter.CENTER)
+        amtL.place(relx=0.75, rely=0.5, anchor=customtkinter.CENTER)
+        delButton.place(relx=0.92, rely=0.5, anchor=customtkinter.CENTER)
 
         # Packing everything
         record.pack(pady=3)
@@ -312,29 +312,83 @@ def printBudget(recordsFrame, graphFrame, embFP):
     for i in range(len(elements)):
         printRecord(i)
 
-    # Income graph
-    # incomeG = [str(i[2]).upper() for i in elements if i[0]=='inc']
-    # valuesG = [str(i[3]).upper() for i in elements if i[0]=='inc']
+    incomeGraph = customtkinter.CTkFrame(graphFrame, width=320, height=370)
+    expenseGraph = customtkinter.CTkFrame(graphFrame, width=320, height=370)
 
-    statsT = [(str(i[2]).upper(), i[3]) for i in elements if i[0]=='inc']
+    incomeStatsT = [(str(i[2]).upper(), i[3]) for i in elements if i[0]=='inc']
+    expenseStatsT = [(str(i[2]).upper(), i[3]) for i in elements if i[0]=='exp']
+
+    incomeResult = {}
+    for i in incomeStatsT:
+        incomeResult.setdefault(i[0], []).append(float(i[1]))
+    for i in incomeResult:
+        temp = sum(incomeResult[i])
+        incomeResult[i] = temp
+    incomeTitles = [name for name, value in incomeResult.items()]
+    incomeValues = [value for name, value in incomeResult.items()]
+
+    expenseResult = {}
+    for i in expenseStatsT:
+        expenseResult.setdefault(i[0], []).append(float(i[1]))
+    for i in expenseResult:
+        temp = sum(expenseResult[i])
+        expenseResult[i] = temp
+    expenseTitles = [name for name, value in expenseResult.items()]
+    expenseValues = [value for name, value in expenseResult.items()]
+
+    def createIncGraph():
+        incFig = plt.Figure()
+        incFig, ax = plt.subplots(figsize=(5, 5), dpi=60)
+        ax.pie(incomeValues, labels=incomeTitles, autopct='%0.1f%%')
+        incBar = FigureCanvasTkAgg(incFig, incomeGraph)
+        return incBar
+
+    def createExpGraph():
+        expFig = plt.Figure()
+        expFig, ax = plt.subplots(figsize=(5, 5), dpi=60)
+        ax.pie(expenseValues, labels=expenseTitles, autopct='%0.1f%%')
+        expBar = FigureCanvasTkAgg(expFig, expenseGraph)
+        return expBar
+
+    def choice(graphFrame):
+        for widget in expenseGraph.winfo_children():
+            widget.destroy()
+        for widget in incomeGraph.winfo_children():
+            widget.destroy()
+        
+        incBar = createIncGraph().get_tk_widget()
+        expBar = createExpGraph().get_tk_widget()
+
+
+        def switchFrames(value):
+            if value=='Income': 
+                incomeGraph.place(relx=0.5, rely=0.6, anchor=customtkinter.CENTER)
+                expenseGraph.place_forget()
+                # for widget in expenseGraph.winfo_children(): 
+                #     widget.destroy()
+                #     print(widget)
+                
+                incBar.place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
+                
+            elif value=='Expense': 
+                expenseGraph.place(relx=0.5, rely=0.6, anchor=customtkinter.CENTER)
+                incomeGraph.place_forget()
+                # for widget in incomeGraph.winfo_children(): 
+                #     widget.destroy()
+                #     print(widget)
+                
+                expBar.place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
+                
+
+        segmentedButton = customtkinter.CTkSegmentedButton(graphFrame, values=['Income', 'Expense'], command=switchFrames)
+        segmentedButton.set('Income')
+        segmentedButton.place(relx=0.5, rely=0.05, anchor=customtkinter.CENTER)
+        
+
+    choice(graphFrame)
     
-    result = {}
 
-    for i in statsT:
-        result.setdefault(i[0], []).append(float(i[1]))
-
-    for i in result:
-        zmienna = sum(result[i])
-        result[i] = zmienna
-
-    titles = [name for name, value in result.items()]
-    values = [value for name, value in result.items()]
-
-    figure = plt.Figure(figsize=(1, 1), dpi=100)
-    figure, ax = plt.subplots()
-    ax.pie(values, labels=titles, autopct='%0.1f%%')
-    bar1 = FigureCanvasTkAgg(figure, graphFrame)
-    bar1.get_tk_widget().place(relx=0.5, rely=0.55, anchor=tkinter.CENTER)
+    
   
 
 if __name__ == '__main__':

@@ -1,5 +1,3 @@
 Type,Place,Title,Amount
 inc,-,For life,1600
-inc,Dom,Od Błażeja,150
 exp,Test,123,123
-inc,Czarny,Od błażeja,500
