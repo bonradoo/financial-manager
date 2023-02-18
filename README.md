@@ -1,28 +1,19 @@
 
 # 📈 Financial Tracker
+The primary objective of this project is to facilitate budget management using free and open-source software. Initially, the application will be entirely based in the terminal for testing purposes. In subsequent versions, I intend to create a user-friendly GUI and ultimately develop a web application. My belief is that having access to the application from any device will make it simpler to manage one's budget effectively.
 
-The main idea behind the project is to help manage budget with free and open-source software. 
-At first the application will be based fully in terminal (for testing purposes and stuff). 
-In the later versions I plan to convert it to a gui app and finnaly I want to turn it into a web application.
-I believe it would be easiest to take care of budget while having it available from every device. 
 
-## 🗺️ Roadmap
+## ▶️ Current state
+At present, the 'Budget' section of the app is complete and functional, though some adjustments may be made in the future. My aim is to promptly address any minor issues that arise on a daily basis and release new versions of the app as frequently as possible.
 
-- **V1.0 (terminal)**
-    - CSV file import and export
-    - Add income/expense
-    - Show total income/expenditure
-    - Colorated labels
-    - Encrypted saved data
 
-- **V2.0 (gui)**
-    - TBA
+## How to run (Windows):
+1. ``` py -m venv venv ```
+2. ``` .\venv\Scripts\Activate.ps1 ```
+3. ``` pip install -r requirements.txt ```
+4. Run main_gui.py
 
-- **V3.0 (web)**
-    - TBA
-    
 
 ## 👌 About Me
-Hi! I'm a second year cybersecurity student at Wrocław University of Technology.
-Last year I became interested in investing but, as anybody should, I am not happy with sharing my data with big tech companies (so other application were off the tabel).
-Therefore I decided to create a small tracker application to help me manage my investemenst and, as I am a student, I decided to start with personal budget management. 
+Hello there! I'm currently a second-year cybersecurity student at Wrocław University of Technology.
+Recently, I became intrigued by the world of investing, but like many people, I am wary of entrusting my data to large tech companies (which ruled out other investment tracking applications). As a result, I took it upon myself to create a small-scale tracker application to assist with managing my investments. Given that I'm still a student, I opted to begin with personal budget management.

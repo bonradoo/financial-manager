@@ -1,3 +1,2 @@
 Type,Place,Title,Amount
 inc,-,For life,1600
-exp,Test,123,123
