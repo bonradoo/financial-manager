@@ -31,15 +31,13 @@ def saveToFile(line):
         filePath = './bin/log/' + str(thisYear)
         if not os.path.exists(filePath): os.makedirs(filePath)
         filePath = filePath + '/' + str(thisMonth) + '.txt'
-
+        
         # Checking formatting
-        if line[0]=='' or line[1]=='' or line[2]=='' or line[3]=='':
-            if not line[3].isNumber():
-                print('Unable to save')
-                return
+        if line[0]=='' or line[1]=='' or line[2]=='' or isNumber(line[3]):
+            print('Unable to save file')
             return
         line[3] = str(line[3]).replace(',', '.')
-
+        
         # Checking if file exists
         if not os.path.exists(filePath): 
             with open(filePath, 'w') as f:
@@ -128,14 +126,14 @@ def addLog(app):
         monthCombo.set(getMonth()[0])
 
     # Creating CTk entries
-    place = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Place")
-    title = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Title")
-    amount = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Amount")
+    placeEntry = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Place")
+    titleEntry = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Title")
+    amountEntry = customtkinter.CTkEntry(frame, width=230, height=50, placeholder_text="Amount")
 
     # Placing CTk entries
-    amount.place(relx=0.5, rely=0.78, anchor=tkinter.CENTER)
-    place.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
-    title.place(relx=0.5, rely=0.64, anchor=tkinter.CENTER)
+    placeEntry.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    titleEntry.place(relx=0.5, rely=0.64, anchor=tkinter.CENTER)
+    amountEntry.place(relx=0.5, rely=0.78, anchor=tkinter.CENTER)
 
     # Segmented button function
     def segChoice(value):
@@ -149,20 +147,22 @@ def addLog(app):
 
     # Save button action
     def saveAction():
-        saveToFile([typeVar.get(), place.get(), title.get(), amount.get()])
-        place.delete(0, 'end')
-        title.delete(0, 'end')
-        amount.delete(0, 'end')
+        saveToFile([typeVar.get(), placeEntry.get(), titleEntry.get(), amountEntry.get()])
+        placeEntry.delete(0, 'end')
+        titleEntry.delete(0, 'end')
+        amountEntry.delete(0, 'end')
         printTotals(summaryFrame, filePath + monthVal.get())
         printBudget(summaryFrame, filePath + monthVal.get())
-        place.focus()
+        placeEntry.focus()
     
     saveButton = customtkinter.CTkButton(frame, text='Save', width=230, height=50, command=saveAction)
     saveButton.place(relx=0.5, rely=0.92, anchor=tkinter.CENTER)
+    placeEntry.bind('<Return>', command=lambda event: saveAction())
+    titleEntry.bind('<Return>', command=lambda event: saveAction())
+    amountEntry.bind('<Return>', command=lambda event: saveAction())
 
 # Function for totals
 def printTotals(summaryFrame, embFP):
-
     # Creating totals CTk frames
     expFrame = customtkinter.CTkFrame(summaryFrame, width=220, height=50, corner_radius=10)
     incFrame = customtkinter.CTkFrame(summaryFrame, width=220, height=50, corner_radius=10)
@@ -179,10 +179,9 @@ def printTotals(summaryFrame, embFP):
     for widgets in balFrame.winfo_children(): widgets.destroy()
 
     # Calculate totals
-    with open(embFP, 'r', encoding='utf-8') as file:
-        data = file.readlines()
     frames = []
-    for line in data: frames.append(line.strip('\n'))
+    with open(embFP, 'r', encoding='utf-8') as file:
+        for line in file.readlines(): frames.append(line.strip('\n'))
     elements = [i.split(',') for i in frames]
     totalInc = 0.00
     totalExp = 0.00
@@ -329,33 +328,79 @@ def printBudget(summaryFrame, embFP):
     # Creates income graph figure 
     def createIncFig():
         incFig = plt.Figure()
-        incFig, ax = plt.subplots(figsize=(5, 5), dpi=60)
-        ax.pie(incomeValues, labels=incomeTitles, autopct='%0.1f%%')
+        # incFig, ax = plt.subplots(figsize=(5, 5), dpi=75)
+        # ax.pie(incomeValues, labels=incomeTitles, autopct='%0.1f%%')
+
+        # incFig, ax = plt.subplots(figsize=(5, 5), dpi=75)
+        incFig, ax = plt.subplots(facecolor='#2b2b2b')
+        incFig.set_size_inches(3.85, 2.5, forward=True)
+        # expFig.set_rasterized()
+        bars = ax.barh(incomeTitles, incomeValues, align='center')
+        # bars = ax.barh(width=10, height=1, rasterized=True)
+        ax.bar_label(bars)
+        ax.set_title('Expense')
+        
+
         return incFig
+    
+    
     
     # Creates expense graph figure 
     def createExpFig():
         expFig = plt.Figure()
-        expFig, ax = plt.subplots(figsize=(5, 5), dpi=60)
-        ax.pie(expenseValues, labels=expenseTitles, autopct='%0.1f%%')
+        # expFig, ax = plt.subplots(figsize=(5, 5), dpi=75)
+        # ax.pie(expenseValues, labels=expenseTitles, autopct='%0.1f%%')
+
+        expFig, ax = plt.subplots(facecolor='red', figsize=(5, 4), dpi=60)
+        # expFig.set_size_inches(3.85, 2.5, forward=True)
+        # expFig.set_rasterized()
+        bars = ax.barh(expenseTitles, expenseValues, align='center')
+        # bars = ax.barh(width=10, height=1, rasterized=True)
+        ax.bar_label(bars)
+        ax.text(1, expenseValues[1], 'niga', ha='center')
+        ax.set_title('Expense')
+
         return expFig
 
     # Creates frames for graphs
-    incomeGraph = customtkinter.CTkFrame(graphFrame, width=320, height=370)
-    expenseGraph = customtkinter.CTkFrame(graphFrame, width=320, height=370)
+    incomeGraph = customtkinter.CTkFrame(graphFrame, width=320, height=320)
+    expenseGraph = customtkinter.CTkFrame(graphFrame, width=320, height=320)
+
+
+    def drawGraphs():
+        # # Clears frame if already exists
+        # if plt.fignum_exists(incFig.number):
+        #     incFig.clear()
+        #     plt.close(incFig)
+        # if plt.fignum_exists(expFig.number):
+        #     expFig.clear()
+        #     plt.close(expFig)
+        plt.close('all')
+        # plt.autoscale(enable=True)
+        expFig = createExpFig()
+        incFig = createIncFig()
+
+        expBar = FigureCanvasTkAgg(expFig, graphFrame)
+        expBar.get_tk_widget().place(relx=0.5, rely=0.25, anchor=customtkinter.CENTER)
+
+        incBar = FigureCanvasTkAgg(incFig, graphFrame)
+        incBar.get_tk_widget().place(relx=0.5, rely=0.75, anchor=customtkinter.CENTER)
+
+    drawGraphs()
 
     # Segmented button function
     def switchFrames(value):
-        # Clears all plots before creating new ones
-        plt.close('all')
+        
+
+        # plt.autoscale(enable=True)
         expFig = createExpFig()
         incFig = createIncFig()
 
         if value=='Income': 
             # Places frame and graph
-            incomeGraph.place(relx=0.5, rely=0.6, anchor=customtkinter.CENTER)
+            incomeGraph.place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
             incBar = FigureCanvasTkAgg(incFig, incomeGraph)
-            incBar.get_tk_widget().place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
+            incBar.get_tk_widget().place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
 
             # Clears frame if already exists
             if plt.fignum_exists(expFig.number):
@@ -368,9 +413,9 @@ def printBudget(summaryFrame, embFP):
             
         elif value=='Expense': 
             # Places frame and graph
-            expenseGraph.place(relx=0.5, rely=0.6, anchor=customtkinter.CENTER)
+            expenseGraph.place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
             expBar = FigureCanvasTkAgg(expFig, expenseGraph)
-            expBar.get_tk_widget().place(relx=0.5, rely=0.55, anchor=customtkinter.CENTER)
+            expBar.get_tk_widget().place(relx=0.5, rely=0.5, anchor=customtkinter.CENTER)
 
             # Clears frame if already exists
             if plt.fignum_exists(incFig.number):
@@ -380,10 +425,10 @@ def printBudget(summaryFrame, embFP):
             incomeGraph.place_forget()
             for widget in incomeGraph.winfo_children():
                 widget.destroy()
-            
-    segmentedButton = customtkinter.CTkSegmentedButton(graphFrame, values=['Income', 'Expense'], command=switchFrames)
-    segmentedButton.place(relx=0.5, rely=0.05, anchor=customtkinter.CENTER)
-    segmentedButton.set('Income')
+        
+    # Segmented button handling
+    # segmentedButton = customtkinter.CTkSegmentedButton(graphFrame, values=['Income', 'Expense'], command=switchFrames)
+    # segmentedButton.place(relx=0.5, rely=0.08, anchor=customtkinter.CENTER)
     
 
     

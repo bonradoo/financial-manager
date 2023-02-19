@@ -72,14 +72,18 @@ def loginPage(frame):
     incorrect = customtkinter.CTkLabel(loginFrame, width=200, height=10, text='Incorrect password', font=(None, 12), text_color='red')
 
     passwordEntry.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
+    passwordEntry.focus()
 
     # Depending if password file exists place according CTk assets
     if not os.path.exists('./bin/pass.key'):
         signupTitle.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
         signupButton.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
+        passwordEntry.bind('<Return>', command=lambda event: [setPassword(password.get()), isCorrect(acceptance)])
     else:
         loginTitle.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
         loginButton.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
+        passwordEntry.bind('<Return>', command=lambda event: [checkCorrect(password.get()), isCorrect(acceptance)])
+
 
 
 if __name__ == '__main__':
