@@ -351,14 +351,16 @@ def printBudget(summaryFrame, embFP):
         # expFig, ax = plt.subplots(figsize=(5, 5), dpi=75)
         # ax.pie(expenseValues, labels=expenseTitles, autopct='%0.1f%%')
 
-        expFig, ax = plt.subplots(facecolor='red', figsize=(5, 4), dpi=60)
-        # expFig.set_size_inches(3.85, 2.5, forward=True)
-        # expFig.set_rasterized()
+        expFig, ax = plt.subplots(facecolor='#2b2b2b', figsize=(7, 4.5), dpi=55)
         bars = ax.barh(expenseTitles, expenseValues, align='center')
-        # bars = ax.barh(width=10, height=1, rasterized=True)
         ax.bar_label(bars)
-        ax.text(1, expenseValues[1], 'niga', ha='center')
         ax.set_title('Expense')
+        ax.spines['bottom'].set_color('red')
+        ax.spines['top'].set_color('red')
+        ax.xaxis.label.set_color('red')
+        ax.tick_params(axis='x', colors='red')
+
+        expFig.savefig('./bin/expFig.png')
 
         return expFig
 
@@ -381,10 +383,10 @@ def printBudget(summaryFrame, embFP):
         incFig = createIncFig()
 
         expBar = FigureCanvasTkAgg(expFig, graphFrame)
-        expBar.get_tk_widget().place(relx=0.5, rely=0.25, anchor=customtkinter.CENTER)
+        expBar.get_tk_widget().place(relx=0.55, rely=0.25, anchor=customtkinter.CENTER)
 
         incBar = FigureCanvasTkAgg(incFig, graphFrame)
-        incBar.get_tk_widget().place(relx=0.5, rely=0.75, anchor=customtkinter.CENTER)
+        incBar.get_tk_widget().place(relx=0.55, rely=0.75, anchor=customtkinter.CENTER)
 
     drawGraphs()
 

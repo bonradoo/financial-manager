@@ -1,0 +1,35 @@
+{
+    "QMainWindow":[
+        {
+            "tittle": "Financial Tracker",
+            "frameless": true,
+            "translucentBg": true,
+            "shadow":[
+                {
+                    "color": "#fff",
+                    "blurRadius": 20,
+                    "xOffset": 0,
+                    "yOffset": 0,
+                    "centralWidget": "centralWidget"
+                }
+            ],
+
+            "navigation":[
+                {
+                    "minimize": "minimize_button",
+                    "close": "exit_button",
+                    "restore":[
+                        {
+                            "buttonName": "back_button"
+                        }
+                    ],
+                    "moveWindow": "header_frame",
+                    "tittleBar": "header_frame"
+                }
+                
+
+            ]
+        }
+    ]
+
+}
