@@ -1,3 +1,4 @@
 PyQt5
 PyQt5Designer
 PySide2
+QT-PyQt-PySide-Custom-Widgets
