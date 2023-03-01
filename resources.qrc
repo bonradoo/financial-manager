@@ -1,39 +1,20 @@
 <RCC>
-  <qresource prefix="icons_color">
-    <file>icons/icons8-info-96.png</file>
-    <file>icons/icons8-minimize-window-96.png</file>
-    <file>icons/icons8-close-window-96.png</file>
-    <file>icons/icons8-back-96.png</file>
-    <file>icons/icons8-menu-96.png</file>
-    <file>icons/icons8-bill-96.png</file>
-    <file>icons/icons8-check-book-96.png</file>
-    <file>icons/icons8-account-100.png</file>
-    <file>icons/icons8-bonds-100.png</file>
-    <file>icons/icons8-coins-100.png</file>
-    <file>icons/icons8-linkedin-100.png</file>
-    <file>icons/icons8-privacy-100.png</file>
-  </qresource>
-  <qresource prefix="icons_plain">
-    <file>icons_plain/icons8-database-100.png</file>
-    <file>icons_plain/icons8-add-database-100.png</file>
-    <file>icons_plain/icons8-add-properties-100.png</file>
-    <file>icons_plain/icons8-area-chart-100.png</file>
-    <file>icons_plain/icons8-back-100.png</file>
-    <file>icons_plain/icons8-close-100.png</file>
-    <file>icons_plain/icons8-combo-chart-100.png</file>
-    <file>icons_plain/icons8-contact-details-100.png</file>
-    <file>icons_plain/icons8-data-encryption-100.png</file>
-    <file>icons_plain/icons8-information-100.png</file>
-    <file>icons_plain/icons8-info-squared-100.png</file>
-    <file>icons_plain/icons8-line-chart-100.png</file>
-    <file>icons_plain/icons8-menu-100.png</file>
-    <file>icons_plain/icons8-more-info-100.png</file>
-    <file>icons_plain/icons8-pie-chart-100.png</file>
-    <file>icons_plain/icons8-subtract-100.png</file>
-  </qresource>
-  <qresource prefix="fonts">
-    <file>fonts/ACETONE.ttf</file>
-    <file>fonts/lottepaperfang.ttf</file>
-    <file>fonts/Blackout Sunrise.ttf</file>
+  <qresource prefix="resources">
+    <file>icons/icons8-add-database-100.png</file>
+    <file>icons/icons8-add-properties-100.png</file>
+    <file>icons/icons8-area-chart-100.png</file>
+    <file>icons/icons8-back-100.png</file>
+    <file>icons/icons8-close-100.png</file>
+    <file>icons/icons8-combo-chart-100.png</file>
+    <file>icons/icons8-contact-details-100.png</file>
+    <file>icons/icons8-database-100.png</file>
+    <file>icons/icons8-data-encryption-100.png</file>
+    <file>icons/icons8-information-100.png</file>
+    <file>icons/icons8-info-squared-100.png</file>
+    <file>icons/icons8-line-chart-100.png</file>
+    <file>icons/icons8-menu-100.png</file>
+    <file>icons/icons8-more-info-100.png</file>
+    <file>icons/icons8-pie-chart-100.png</file>
+    <file>icons/icons8-subtract-100.png</file>
   </qresource>
 </RCC>

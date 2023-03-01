@@ -100,7 +100,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons_plain/icons_plain/icons8-pie-chart-100.png</pixmap>
+             <pixmap resource="resources.qrc">:/resources/icons/icons8-pie-chart-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -167,7 +167,7 @@ border: 5px;
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons_plain/icons_plain/icons8-database-100.png</normaloff>:/icons_plain/icons_plain/icons8-database-100.png</iconset>
+              <normaloff>:/resources/icons/icons8-database-100.png</normaloff>:/resources/icons/icons8-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -192,7 +192,7 @@ border: 5px;
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons_plain/icons_plain/icons8-add-database-100.png</normaloff>:/icons_plain/icons_plain/icons8-add-database-100.png</iconset>
+              <normaloff>:/resources/icons/icons8-add-database-100.png</normaloff>:/resources/icons/icons8-add-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -231,7 +231,7 @@ border: 5px;
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons_plain/icons_plain/icons8-area-chart-100.png</normaloff>:/icons_plain/icons_plain/icons8-area-chart-100.png</iconset>
+              <normaloff>:/resources/icons/icons8-area-chart-100.png</normaloff>:/resources/icons/icons8-area-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -254,7 +254,7 @@ border: 5px;
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
-              <normaloff>:/icons_plain/icons_plain/icons8-line-chart-100.png</normaloff>:/icons_plain/icons_plain/icons8-line-chart-100.png</iconset>
+              <normaloff>:/resources/icons/icons8-combo-chart-100.png</normaloff>:/resources/icons/icons8-combo-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -295,21 +295,6 @@ border: 5px;
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item row="1" column="1">
-           <widget class="QLabel" name="contact_label">
-            <property name="font">
-             <font>
-              <family>ACETONE</family>
-              <pointsize>10</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Contact</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="1">
            <widget class="QLabel" name="about_label">
             <property name="font">
@@ -325,28 +310,18 @@ border: 5px;
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="about_pixelmap">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
+          <item row="1" column="1">
+           <widget class="QLabel" name="contact_label">
+            <property name="font">
+             <font>
+              <family>ACETONE</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
             </property>
             <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons_plain/icons_plain/icons8-information-100.png</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
+             <string>Contact</string>
             </property>
            </widget>
           </item>
@@ -368,7 +343,32 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/icons_plain/icons_plain/icons8-contact-details-100.png</pixmap>
+             <pixmap resource="resources.qrc">:/resources/icons/icons8-contact-details-100.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="about_pixelmap">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="resources.qrc">:/resources/icons/icons8-info-squared-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -478,13 +478,16 @@ border: 5px;
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/icons_plain/icons_plain/icons8-menu-100.png</normaloff>:/icons_plain/icons_plain/icons8-menu-100.png</iconset>
+                 <normaloff>:/resources/icons/icons8-menu-100.png</normaloff>:/resources/icons/icons8-menu-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
                  <width>24</width>
                  <height>24</height>
                 </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -599,7 +602,7 @@ border: 5px;
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/icons_plain/icons_plain/icons8-back-100.png</normaloff>:/icons_plain/icons_plain/icons8-back-100.png</iconset>
+                 <normaloff>:/resources/icons/icons8-back-100.png</normaloff>:/resources/icons/icons8-back-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -616,7 +619,7 @@ border: 5px;
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/icons_plain/icons_plain/icons8-subtract-100.png</normaloff>:/icons_plain/icons_plain/icons8-subtract-100.png</iconset>
+                 <normaloff>:/resources/icons/icons8-subtract-100.png</normaloff>:/resources/icons/icons8-subtract-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -633,7 +636,7 @@ border: 5px;
                </property>
                <property name="icon">
                 <iconset resource="resources.qrc">
-                 <normaloff>:/icons_plain/icons_plain/icons8-close-100.png</normaloff>:/icons_plain/icons_plain/icons8-close-100.png</iconset>
+                 <normaloff>:/resources/icons/icons8-close-100.png</normaloff>:/resources/icons/icons8-close-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -667,7 +670,7 @@ border: 5px;
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="budget_dash_frame">
              <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -680,6 +683,18 @@ border: 5px;
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <property name="leftMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
                  <item alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="bd_title_label">
                    <property name="font">
@@ -1999,5 +2014,22 @@ border: 5px;
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>menu_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>left_menu_widget</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>212</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>191</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
