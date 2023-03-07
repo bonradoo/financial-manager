@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>884</width>
-    <height>664</height>
+    <width>1114</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,6 +32,12 @@ border: 3px;
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QFrame" name="left_menu_widget">
+      <property name="maximumSize">
+       <size>
+        <width>184</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="styleSheet">
        <string notr="true">QFrame{
 background-color: blue;
@@ -100,7 +106,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/icons/icons8-pie-chart-100.png</pixmap>
+             <pixmap>:/resources/icons/icons8-pie-chart-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -166,7 +172,7 @@ border: 5px;
              <string>Show budget</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/resources/icons/icons8-database-100.png</normaloff>:/resources/icons/icons8-database-100.png</iconset>
             </property>
            </widget>
@@ -191,7 +197,7 @@ border: 5px;
              <string>Add log</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/resources/icons/icons8-add-database-100.png</normaloff>:/resources/icons/icons8-add-database-100.png</iconset>
             </property>
            </widget>
@@ -230,7 +236,7 @@ border: 5px;
              <string>Show investements</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/resources/icons/icons8-area-chart-100.png</normaloff>:/resources/icons/icons8-area-chart-100.png</iconset>
             </property>
            </widget>
@@ -253,7 +259,7 @@ border: 5px;
              <string>Add investement</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
+             <iconset>
               <normaloff>:/resources/icons/icons8-combo-chart-100.png</normaloff>:/resources/icons/icons8-combo-chart-100.png</iconset>
             </property>
            </widget>
@@ -343,7 +349,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/icons/icons8-contact-details-100.png</pixmap>
+             <pixmap>:/resources/icons/icons8-contact-details-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -368,7 +374,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/icons/icons8-info-squared-100.png</pixmap>
+             <pixmap>:/resources/icons/icons8-info-squared-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -477,7 +483,7 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset>
                  <normaloff>:/resources/icons/icons8-menu-100.png</normaloff>:/resources/icons/icons8-menu-100.png</iconset>
                </property>
                <property name="iconSize">
@@ -601,7 +607,7 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset>
                  <normaloff>:/resources/icons/icons8-back-100.png</normaloff>:/resources/icons/icons8-back-100.png</iconset>
                </property>
                <property name="iconSize">
@@ -618,7 +624,7 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset>
                  <normaloff>:/resources/icons/icons8-subtract-100.png</normaloff>:/resources/icons/icons8-subtract-100.png</iconset>
                </property>
                <property name="iconSize">
@@ -635,7 +641,7 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
+                <iconset>
                  <normaloff>:/resources/icons/icons8-close-100.png</normaloff>:/resources/icons/icons8-close-100.png</iconset>
                </property>
                <property name="iconSize">
@@ -2014,22 +2020,5 @@ border: 5px;
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>menu_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>left_menu_widget</receiver>
-   <slot>update()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>212</x>
-     <y>40</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>191</x>
-     <y>273</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
