@@ -12,34 +12,23 @@ import misc
 
 
 
-# class UI(QMainWindow):
-#     def __init__(self, parent=None):
-#         super().__init__()
-#         self.initUi(self)
+def setYear():
+    yearArr = misc.getYearArr('./bin/log/')
+    for year in yearArr:
+        ui.year_combo.addItem(year)
 
-#     def initUi(self):
-
-
-# class UI(QMainWindow, Ui_MainWindow):
-#     def __init__(self, parent: typing.Optional[QtWidgets.QWidget] = ..., flags: Qt.WindowFlags = ...) -> None:
-#         super().__init__(parent, flags)
-#         self.ui = Ui_MainWindow()
-#         self.ui.setupUi(self)
+def setMonth():
+    ui.month_combo.clear()
+    monthArr = misc.getMonthArr('./bin/log/' + ui.year_combo.currentText() + '/')
+    for month in monthArr:
+        ui.month_combo.addItem(str(month).strip('.txt'))
 
 def leftSlideMenu():
-    width = ui.left_menu_widget.width()
-
-    if width==0: newWidth=184
-    else: newWidth=0
+    if ui.left_menu_widget.width() == 0: newWidth = 184
+    else: newWidth = 0
 
     ui.left_menu_widget.setMaximumWidth(newWidth)
-    
-    # animation = QtCore.QPropertyAnimation(ui.left_menu_widget, b'size')
-    # animation.setStartValue(QtCore.QSize(width, ui.left_menu_widget.height()))
-    # animation.setEndValue(QtCore.QSize(newWidth, ui.left_menu_widget.height()))
-    # animation.setDuration(550)
-    # animation.setEasingCurve(QtCore.QEasingCurve.OutBounce)
-    # animation.start()
+
 
 def switchPages():
     ui.show_bud_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(0))
@@ -50,10 +39,11 @@ def switchPages():
 def controls():
     ui.exit_button.clicked.connect(sys.exit)
     ui.minimize_button.clicked.connect(MainWindow.showMinimized)
-    # ui.back_button.clicked.connect(print(1))
+    # ui.back_button.clicked.connect()
 
     ui.menu_button.clicked.connect(leftSlideMenu)
     ui.ab_save_button.clicked.connect(saveLog)
+    ui.year_combo.currentTextChanged.connect(setMonth)
 
 def saveLog():
     if ui.exp_radio.isChecked(): log_type = 'exp'
@@ -63,9 +53,8 @@ def saveLog():
     log_title = ui.title_edit.text()
     log_amount = ui.amount_edit.text()
 
-    YM_input = ui.year_combo.currentText() + '/' + ui.month_combo.currentText()
-
-    misc.saveToFile([log_type, log_place, log_title, float(log_amount)], YM_input)
+    filePath = './bin/log/' +  ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+    misc.saveToFile([log_type, log_place, log_title, float(log_amount)], filePath)
 
 if __name__ == "__main__":
     misc.createFiles()
@@ -78,5 +67,6 @@ if __name__ == "__main__":
 
     controls()
     switchPages()
+    setYear()
     
     sys.exit(app.exec_())

@@ -4,6 +4,11 @@ from datetime import timedelta, date
 # Main file path
 filePath = './bin/log/'
 
+def getYearArr(FP):
+    return [os.listdir(FP)[i] for i in range(len(os.listdir(FP)))]
+def getMonthArr(FP):
+    return [os.listdir(FP)[i] for i in range(len(os.listdir(FP)))]
+
 # Function checking if provided number is float
 def isNumber(num):
     try:
@@ -31,49 +36,32 @@ def createFiles():
                 file.write('Type,Place,Title,Amount\n')
 
 # Function Saving to file
-def saveToFile(line, YM_input=None):
+def saveToFile(line, FP):
     try:
-        # if YM_input==None:
-        #     # File path config
-        #     thisMonth = date.today().strftime('%B')
-        #     thisYear = date.today().strftime('%Y')
-        #     filePath = './bin/log/' + str(thisYear)
-        #     if not os.path.exists(filePath): os.makedirs(filePath)
-        #     filePath = filePath + '/' + str(thisMonth) + '.txt'
-        # else:
-        #     filePath = './bin/log/' + YM_input + '.txt'
-        
-        # File path config
-        thisMonth = date.today().strftime('%B')
-        thisYear = date.today().strftime('%Y')
-        filePath = './bin/log/' + str(thisYear)
-        if not os.path.exists(filePath): os.makedirs(filePath)
-        filePath = filePath + '/' + str(thisMonth) + '.txt'
-    
         # Checking formatting
-        if line[0]=='' or line[1]=='' or line[2]=='' or isNumber(line[3]):
+        line[3] = str(line[3]).replace(',', '.')
+        if line[0]=='' or line[1]=='' or line[2]=='' or not isNumber(line[3]):
             print('Unable to save file')
             return
-        line[3] = str(line[3]).replace(',', '.')
         
         # Checking if file exists
-        if not os.path.exists(filePath): 
-            with open(filePath, 'w') as f:
-                print(1)
+        if not os.path.exists(FP): 
+            with open(FP, 'w') as f:
                 f.write('Type,Place,Title,Amount\n')
 
         # Checking if file has heading
-        with open(filePath, 'r') as f:
+        with open(FP, 'r') as f:
             if f.readline() == 'Type,Place,Title,Amount\n':
                 hasHeading = True
             else:
                 hasHeading = False
 
-        with open(filePath, 'a', encoding='utf-8') as f:
+        with open(FP, 'a', encoding='utf-8') as f:
             if hasHeading:
                 f.write(','.join(line) + '\n')
             else:
                 f.write('Type,Place,Title,Amount\n')
                 f.write(','.join(line) + '\n')   
+
     except:
         print('Error occured while saving the file')
