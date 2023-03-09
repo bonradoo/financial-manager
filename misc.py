@@ -4,6 +4,25 @@ from datetime import timedelta, date
 # Main file path
 filePath = './bin/log/'
 
+def returnTotals(FP):
+    totalExp = 0.00
+    totalInc = 0.00
+    logs = []
+    with open(FP, 'r', encoding='utf-8') as file:
+        for line in file.readlines(): logs.append(line.strip('\n'))
+    elements = [i.split(',') for i in logs]
+
+    for el in elements:
+        if el[0] == 'inc': 
+            totalInc += float(el[3])
+            totalInc = round(totalInc, 2)
+        elif el[0] == 'exp': 
+            totalExp += float(el[3])
+            totalExp = round(totalExp, 2)
+
+    totalBal = totalInc - totalExp
+    return [str(totalExp), str(totalInc), str(totalBal)]
+
 def getYearArr(FP):
     return [os.listdir(FP)[i] for i in range(len(os.listdir(FP)))]
 def getMonthArr(FP):

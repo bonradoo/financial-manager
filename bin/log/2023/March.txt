@@ -1,1 +1,3 @@
 Type,Place,Title,Amount
+inc,qwe,qwe,123.0
+exp,qwe,qwe,123.0

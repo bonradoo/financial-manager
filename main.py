@@ -10,6 +10,12 @@ from ui_interface import *
 from Custom_Widgets import * #QT-PyQt-PySide-Custom-Widgets
 import misc
 
+def setTotals():
+    filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+    totals = misc.returnTotals(filePath)
+    ui.ab_expval_label.setText(totals[0])
+    ui.ab_incval_label.setText(totals[1])
+    ui.ab_balval_label.setText(totals[2])
 
 
 def setYear():
@@ -45,16 +51,26 @@ def controls():
     ui.ab_save_button.clicked.connect(saveLog)
     ui.year_combo.currentTextChanged.connect(setMonth)
 
-def saveLog():
-    if ui.exp_radio.isChecked(): log_type = 'exp'
-    elif ui.inc_radio.isChecked(): log_type = 'inc'
-    
-    log_place = ui.place_edit.text()
-    log_title = ui.title_edit.text()
-    log_amount = ui.amount_edit.text()
+    # Set totals refreshers
+    ui.ab_save_button.clicked.connect(setTotals)
+    ui.year_combo.currentTextChanged.connect(setTotals)
+    ui.month_combo.currentTextChanged.connect(setTotals)
 
-    filePath = './bin/log/' +  ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
-    misc.saveToFile([log_type, log_place, log_title, float(log_amount)], filePath)
+
+def saveLog():
+    try:
+        if ui.exp_radio.isChecked(): log_type = 'exp'
+        elif ui.inc_radio.isChecked(): log_type = 'inc'
+        
+        log_place = ui.place_edit.text()
+        log_title = ui.title_edit.text()
+        log_amount = ui.amount_edit.text()
+
+        filePath = './bin/log/' +  ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+        misc.saveToFile([log_type, log_place, log_title, float(log_amount)], filePath)
+    except:
+        print('Error')
+
 
 if __name__ == "__main__":
     misc.createFiles()
@@ -68,5 +84,6 @@ if __name__ == "__main__":
     controls()
     switchPages()
     setYear()
+    setTotals()
     
     sys.exit(app.exec_())

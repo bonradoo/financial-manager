@@ -16,17 +16,18 @@
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">*{
-background-color: #393E46;
-font-family: ACETONE;
-color: #EEEEEE;
+background-color: #101726;
+font-family: Futura;
+color: #BFB6AE;
 }
 
 QPushButton{
-background-color: #222831;
-color: #EEEEEE;
+background-color: #4F638C;
+color: #BFB6AE;
 border-radius: 5px;
 border: 3px;
 }
+
 </string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -40,7 +41,7 @@ border: 3px;
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame{
-background-color: blue;
+background-color: #403837;
 border-radius: 10px;
 border: 5px;
 }</string>
@@ -117,7 +118,7 @@ border: 5px;
            <widget class="QLabel" name="ft_label">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>24</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -162,7 +163,7 @@ border: 5px;
             </property>
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>12</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -187,7 +188,7 @@ border: 5px;
             </property>
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>12</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -228,7 +229,7 @@ border: 5px;
             </property>
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -251,7 +252,7 @@ border: 5px;
             </property>
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -305,7 +306,7 @@ border: 5px;
            <widget class="QLabel" name="about_label">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>10</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -320,7 +321,7 @@ border: 5px;
            <widget class="QLabel" name="contact_label">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>10</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -501,7 +502,7 @@ border: 5px;
               <widget class="QLabel" name="menu_label">
                <property name="font">
                 <font>
-                 <family>ACETONE</family>
+                 <family>Futura</family>
                  <pointsize>12</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
@@ -532,7 +533,7 @@ border: 5px;
            <widget class="QFrame" name="title_frame">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>14</pointsize>
               <weight>50</weight>
               <bold>false</bold>
@@ -550,7 +551,7 @@ border: 5px;
               <widget class="QLabel" name="title_label">
                <property name="font">
                 <font>
-                 <family>ACETONE</family>
+                 <family>Futura</family>
                  <pointsize>18</pointsize>
                  <weight>50</weight>
                  <bold>false</bold>
@@ -671,9 +672,16 @@ border: 5px;
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <pointsize>14</pointsize>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">*{
+background-color: #403837;
+border-radius: 100px;
+border: 100px;
+}</string>
             </property>
             <property name="currentIndex">
              <number>1</number>
@@ -705,7 +713,7 @@ border: 5px;
                   <widget class="QLabel" name="bd_title_label">
                    <property name="font">
                     <font>
-                     <family>ACETONE</family>
+                     <family>Futura</family>
                      <pointsize>14</pointsize>
                     </font>
                    </property>
@@ -1075,7 +1083,7 @@ border: 5px;
                   <widget class="QLabel" name="ab_title_label">
                    <property name="font">
                     <font>
-                     <family>ACETONE</family>
+                     <family>Futura</family>
                      <pointsize>14</pointsize>
                      <weight>50</weight>
                      <bold>false</bold>
@@ -1884,7 +1892,7 @@ border: 5px;
                   <widget class="QLabel" name="id_title_label">
                    <property name="font">
                     <font>
-                     <family>ACETONE</family>
+                     <family>Futura</family>
                      <pointsize>14</pointsize>
                     </font>
                    </property>
@@ -1930,7 +1938,7 @@ border: 5px;
                   <widget class="QLabel" name="ai_title_label">
                    <property name="font">
                     <font>
-                     <family>ACETONE</family>
+                     <family>Futura</family>
                      <pointsize>14</pointsize>
                     </font>
                    </property>
@@ -1979,7 +1987,7 @@ border: 5px;
            <widget class="QFrame" name="copyright_frame">
             <property name="font">
              <font>
-              <family>ACETONE</family>
+              <family>Futura</family>
               <weight>50</weight>
               <bold>false</bold>
              </font>
@@ -1995,7 +2003,7 @@ border: 5px;
               <widget class="QLabel" name="copyright_label">
                <property name="font">
                 <font>
-                 <family>ACETONE</family>
+                 <family>Futura</family>
                  <weight>50</weight>
                  <bold>false</bold>
                 </font>
