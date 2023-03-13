@@ -8,6 +8,7 @@ def returnTotals(FP):
     totalExp = 0.00
     totalInc = 0.00
     logs = []
+    print(FP)
     with open(FP, 'r', encoding='utf-8') as file:
         for line in file.readlines(): logs.append(line.strip('\n'))
     elements = [i.split(',') for i in logs]

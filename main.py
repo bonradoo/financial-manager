@@ -11,23 +11,26 @@ from Custom_Widgets import * #QT-PyQt-PySide-Custom-Widgets
 import misc
 
 def setTotals():
+    
     filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+    print(filePath)
     totals = misc.returnTotals(filePath)
     ui.ab_expval_label.setText(totals[0])
     ui.ab_incval_label.setText(totals[1])
     ui.ab_balval_label.setText(totals[2])
 
-
 def setYear():
     yearArr = misc.getYearArr('./bin/log/')
-    for year in yearArr:
-        ui.year_combo.addItem(year)
+    ui.year_combo.addItems(yearArr)
+    # ui.year_combo.setCurrentIndex(len(yearArr)-1)
+
 
 def setMonth():
     ui.month_combo.clear()
     monthArr = misc.getMonthArr('./bin/log/' + ui.year_combo.currentText() + '/')
-    for month in monthArr:
-        ui.month_combo.addItem(str(month).strip('.txt'))
+    ui.month_combo.addItems(str(month).strip('.txt') for month in monthArr)
+    setTotals()
+
 
 def leftSlideMenu():
     if ui.left_menu_widget.width() == 0: newWidth = 184
@@ -41,6 +44,7 @@ def switchPages():
     ui.add_log_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(1))
     ui.show_inv_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(2))
     ui.add_inv_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(3))
+    
 
 def controls():
     ui.exit_button.clicked.connect(sys.exit)
@@ -53,8 +57,7 @@ def controls():
 
     # Set totals refreshers
     ui.ab_save_button.clicked.connect(setTotals)
-    ui.year_combo.currentTextChanged.connect(setTotals)
-    ui.month_combo.currentTextChanged.connect(setTotals)
+    ui.month_combo.activated.connect(setTotals)
 
 
 def saveLog():
@@ -84,6 +87,5 @@ if __name__ == "__main__":
     controls()
     switchPages()
     setYear()
-    setTotals()
     
     sys.exit(app.exec_())

@@ -16,17 +16,18 @@
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">*{
-background-color: #101726;
+background-color: #262626;
 font-family: Futura;
-color: #BFB6AE;
+color: #F2F2F2;
 }
 
 QPushButton{
-background-color: #4F638C;
-color: #BFB6AE;
+background-color: #B6E1F2;
+color: #262626;
 border-radius: 5px;
 border: 3px;
 }
+
 
 </string>
    </property>
@@ -41,10 +42,11 @@ border: 3px;
       </property>
       <property name="styleSheet">
        <string notr="true">QFrame{
-background-color: #403837;
+background-color: #617C8C;
 border-radius: 10px;
 border: 5px;
-}</string>
+}
+</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -107,7 +109,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap>:/resources/icons/icons8-pie-chart-100.png</pixmap>
+             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-pie-chart-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -173,8 +175,8 @@ border: 5px;
              <string>Show budget</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/resources/icons/icons8-database-100.png</normaloff>:/resources/icons/icons8-database-100.png</iconset>
+             <iconset resource="resources.qrc">
+              <normaloff>:/resources/resources/icons_black/icons8-database-100.png</normaloff>:/resources/resources/icons_black/icons8-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -198,8 +200,8 @@ border: 5px;
              <string>Add log</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/resources/icons/icons8-add-database-100.png</normaloff>:/resources/icons/icons8-add-database-100.png</iconset>
+             <iconset resource="resources.qrc">
+              <normaloff>:/resources/resources/icons_black/icons8-add-database-100.png</normaloff>:/resources/resources/icons_black/icons8-add-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -237,8 +239,8 @@ border: 5px;
              <string>Show investements</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/resources/icons/icons8-area-chart-100.png</normaloff>:/resources/icons/icons8-area-chart-100.png</iconset>
+             <iconset resource="resources.qrc">
+              <normaloff>:/resources/resources/icons_black/icons8-area-chart-100.png</normaloff>:/resources/resources/icons_black/icons8-area-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -260,8 +262,8 @@ border: 5px;
              <string>Add investement</string>
             </property>
             <property name="icon">
-             <iconset>
-              <normaloff>:/resources/icons/icons8-combo-chart-100.png</normaloff>:/resources/icons/icons8-combo-chart-100.png</iconset>
+             <iconset resource="resources.qrc">
+              <normaloff>:/resources/resources/icons_black/icons8-line-chart-100.png</normaloff>:/resources/resources/icons_black/icons8-line-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -350,7 +352,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap>:/resources/icons/icons8-contact-details-100.png</pixmap>
+             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-contact-details-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -375,7 +377,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap>:/resources/icons/icons8-info-squared-100.png</pixmap>
+             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-info-squared-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -390,6 +392,9 @@ border: 5px;
     </item>
     <item>
      <widget class="QFrame" name="right_dashboard_widget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -413,18 +418,19 @@ border: 5px;
         <widget class="QFrame" name="header_frame">
          <property name="styleSheet">
           <string notr="true">QPushButton{
-background-color: #393E46;
+background-color: #617C8C;
 }
 
 QLabel{
-color: #FFD369;
+color: #F2F2F2;
 }
 
 QFrame{
-background-color: blue;
+background-color: #617C8C;
 border-radius: 10px;
 border: 5px;
-}</string>
+}
+</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -484,8 +490,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/resources/icons/icons8-menu-100.png</normaloff>:/resources/icons/icons8-menu-100.png</iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/resources/resources/icons/icons8-menu-100.png</normaloff>:/resources/resources/icons/icons8-menu-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -608,8 +614,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/resources/icons/icons8-back-100.png</normaloff>:/resources/icons/icons8-back-100.png</iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/resources/resources/icons/icons8-back-100.png</normaloff>:/resources/resources/icons/icons8-back-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -625,8 +631,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/resources/icons/icons8-subtract-100.png</normaloff>:/resources/icons/icons8-subtract-100.png</iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/resources/resources/icons/icons8-subtract-100.png</normaloff>:/resources/resources/icons/icons8-subtract-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -642,8 +648,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
-                 <normaloff>:/resources/icons/icons8-close-100.png</normaloff>:/resources/icons/icons8-close-100.png</iconset>
+                <iconset resource="resources.qrc">
+                 <normaloff>:/resources/resources/icons/icons8-close-100.png</normaloff>:/resources/resources/icons/icons8-close-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -661,6 +667,9 @@ border: 5px;
        </item>
        <item>
         <widget class="QFrame" name="action_frame">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -677,16 +686,20 @@ border: 5px;
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">*{
-background-color: #403837;
-border-radius: 100px;
-border: 100px;
-}</string>
+             <string notr="true"/>
             </property>
             <property name="currentIndex">
              <number>1</number>
             </property>
             <widget class="QWidget" name="budget_dash_frame">
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}
+</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_10">
               <item alignment="Qt::AlignTop">
                <widget class="QFrame" name="bd_frame">
@@ -1057,6 +1070,14 @@ border: 100px;
              </layout>
             </widget>
             <widget class="QWidget" name="add_budg_frame">
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}
+</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_13">
               <item>
                <widget class="QFrame" name="ab_frame">
@@ -1259,6 +1280,28 @@ border: 100px;
                      <height>16777215</height>
                     </size>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QComboBox{
+border: 2px solid #B6E1F2;
+border-radius: 5px;
+background-color: #617C8C;
+color: #F2F2F2;
+}
+
+QLineEdit{
+border: 2px solid #B6E1F2;
+border-radius: 5px;
+background-color: #617C8C;
+color: #F2F2F2;
+}
+
+QRadioButton{
+border: 2px solid #B6E1F2;
+border-radius: 5px;
+background-color: #617C8C;
+color: #F2F2F2;
+}</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -1292,6 +1335,9 @@ border: 100px;
                         <height>40</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -1303,16 +1349,16 @@ border: 100px;
                         <number>3</number>
                        </property>
                        <property name="leftMargin">
-                        <number>9</number>
+                        <number>3</number>
                        </property>
                        <property name="topMargin">
-                        <number>9</number>
+                        <number>3</number>
                        </property>
                        <property name="rightMargin">
-                        <number>9</number>
+                        <number>3</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>9</number>
+                        <number>3</number>
                        </property>
                        <item>
                         <widget class="QComboBox" name="year_combo">
@@ -1351,6 +1397,9 @@ border: 100px;
                         <height>40</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
@@ -1358,6 +1407,18 @@ border: 100px;
                        <enum>QFrame::Raised</enum>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_12">
+                       <property name="leftMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>3</number>
+                       </property>
                        <item>
                         <widget class="QRadioButton" name="inc_radio">
                          <property name="minimumSize">
@@ -1422,6 +1483,9 @@ border: 100px;
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="placeholderText">
+                          <string>Place</string>
+                         </property>
                         </widget>
                        </item>
                       </layout>
@@ -1461,6 +1525,9 @@ border: 100px;
                            <width>0</width>
                            <height>30</height>
                           </size>
+                         </property>
+                         <property name="placeholderText">
+                          <string>Title</string>
                          </property>
                         </widget>
                        </item>
@@ -1502,6 +1569,9 @@ border: 100px;
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="placeholderText">
+                          <string>Amount</string>
+                         </property>
                         </widget>
                        </item>
                       </layout>
@@ -1519,6 +1589,19 @@ border: 100px;
                        <string>Save</string>
                       </property>
                      </widget>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                    </layout>
                   </widget>
@@ -1878,6 +1961,14 @@ border: 100px;
              </layout>
             </widget>
             <widget class="QWidget" name="invest_dash_frame">
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}
+</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_2">
               <item>
                <widget class="QFrame" name="id_frame">
@@ -1888,6 +1979,18 @@ border: 100px;
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                 <property name="leftMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
                  <item alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="id_title_label">
                    <property name="font">
@@ -1924,6 +2027,14 @@ border: 100px;
              </layout>
             </widget>
             <widget class="QWidget" name="add_inv_frame">
+             <property name="styleSheet">
+              <string notr="true">QFrame{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}
+</string>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_16">
               <item>
                <widget class="QFrame" name="ai_frame">
@@ -1934,6 +2045,18 @@ border: 100px;
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <property name="leftMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
                  <item alignment="Qt::AlignHCenter">
                   <widget class="QLabel" name="ai_title_label">
                    <property name="font">
@@ -1976,6 +2099,14 @@ border: 100px;
        </item>
        <item alignment="Qt::AlignBottom">
         <widget class="QFrame" name="footer_frame">
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}
+</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -2009,7 +2140,7 @@ border: 100px;
                 </font>
                </property>
                <property name="text">
-                <string>Copyright</string>
+                <string>Copyright Konrad Bik</string>
                </property>
               </widget>
              </item>

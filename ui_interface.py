@@ -13,31 +13,35 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("Financial Tracker")
-        MainWindow.resize(884, 664)
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(1114, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("*{\n"
-"background-color: #393E46;\n"
-"font-family: ACETONE;\n"
-"color: #EEEEEE;\n"
+"background-color: #262626;\n"
+"font-family: Futura;\n"
+"color: #F2F2F2;\n"
 "}\n"
 "\n"
 "QPushButton{\n"
-"background-color: #222831;\n"
-"color: #EEEEEE;\n"
+"background-color: #B6E1F2;\n"
+"color: #262626;\n"
 "border-radius: 5px;\n"
 "border: 3px;\n"
 "}\n"
+"\n"
+"\n"
 "")
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.left_menu_widget = QtWidgets.QFrame(self.centralwidget)
+        self.left_menu_widget.setMaximumSize(QtCore.QSize(184, 16777215))
         self.left_menu_widget.setStyleSheet("QFrame{\n"
-"background-color: blue;\n"
+"background-color: #617C8C;\n"
 "border-radius: 10px;\n"
 "border: 5px;\n"
-"}")
+"}\n"
+"")
         self.left_menu_widget.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.left_menu_widget.setFrameShadow(QtWidgets.QFrame.Raised)
         self.left_menu_widget.setObjectName("left_menu_widget")
@@ -56,13 +60,13 @@ class Ui_MainWindow(object):
         self.ft_pixelmap.setMinimumSize(QtCore.QSize(40, 40))
         self.ft_pixelmap.setMaximumSize(QtCore.QSize(40, 40))
         self.ft_pixelmap.setText("")
-        self.ft_pixelmap.setPixmap(QtGui.QPixmap("./resources/icons/icons8-pie-chart-100.png"))
+        self.ft_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-pie-chart-100.png"))
         self.ft_pixelmap.setScaledContents(True)
         self.ft_pixelmap.setObjectName("ft_pixelmap")
         self.horizontalLayout_6.addWidget(self.ft_pixelmap)
         self.ft_label = QtWidgets.QLabel(self.left_title_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(24)
         font.setBold(False)
         font.setWeight(50)
@@ -81,26 +85,26 @@ class Ui_MainWindow(object):
         self.show_bud_button = QtWidgets.QPushButton(self.left_button_frame)
         self.show_bud_button.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
         self.show_bud_button.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("./resources/icons/icons8-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.show_bud_button.setIcon(icon)
         self.show_bud_button.setObjectName("show_bud_button")
         self.verticalLayout_3.addWidget(self.show_bud_button)
         self.add_log_button = QtWidgets.QPushButton(self.left_button_frame)
         self.add_log_button.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
         self.add_log_button.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("./resources/icons/icons8-add-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-add-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.add_log_button.setIcon(icon1)
         self.add_log_button.setObjectName("add_log_button")
         self.verticalLayout_3.addWidget(self.add_log_button)
@@ -109,22 +113,22 @@ class Ui_MainWindow(object):
         self.show_inv_button = QtWidgets.QPushButton(self.left_button_frame)
         self.show_inv_button.setMinimumSize(QtCore.QSize(160, 35))
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(12)
         self.show_inv_button.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("./resources/icons/icons8-area-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-area-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.show_inv_button.setIcon(icon2)
         self.show_inv_button.setObjectName("show_inv_button")
         self.verticalLayout_3.addWidget(self.show_inv_button)
         self.add_inv_button = QtWidgets.QPushButton(self.left_button_frame)
         self.add_inv_button.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(12)
         self.add_inv_button.setFont(font)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("./resources/icons/icons8-combo-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-line-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.add_inv_button.setIcon(icon3)
         self.add_inv_button.setObjectName("add_inv_button")
         self.verticalLayout_3.addWidget(self.add_inv_button)
@@ -140,7 +144,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.about_label = QtWidgets.QLabel(self.left_contact_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -149,7 +153,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.about_label, 0, 1, 1, 1)
         self.contact_label = QtWidgets.QLabel(self.left_contact_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -160,7 +164,7 @@ class Ui_MainWindow(object):
         self.contact_pixelmap.setMinimumSize(QtCore.QSize(30, 30))
         self.contact_pixelmap.setMaximumSize(QtCore.QSize(30, 30))
         self.contact_pixelmap.setText("")
-        self.contact_pixelmap.setPixmap(QtGui.QPixmap("./resources/icons/icons8-contact-details-100.png"))
+        self.contact_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-contact-details-100.png"))
         self.contact_pixelmap.setScaledContents(True)
         self.contact_pixelmap.setObjectName("contact_pixelmap")
         self.gridLayout_5.addWidget(self.contact_pixelmap, 1, 0, 1, 1)
@@ -168,13 +172,14 @@ class Ui_MainWindow(object):
         self.about_pixelmap.setMinimumSize(QtCore.QSize(30, 30))
         self.about_pixelmap.setMaximumSize(QtCore.QSize(30, 30))
         self.about_pixelmap.setText("")
-        self.about_pixelmap.setPixmap(QtGui.QPixmap("./resources/icons/icons8-info-squared-100.png"))
+        self.about_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-info-squared-100.png"))
         self.about_pixelmap.setScaledContents(True)
         self.about_pixelmap.setObjectName("about_pixelmap")
         self.gridLayout_5.addWidget(self.about_pixelmap, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.left_contact_frame)
         self.horizontalLayout.addWidget(self.left_menu_widget)
         self.right_dashboard_widget = QtWidgets.QFrame(self.centralwidget)
+        self.right_dashboard_widget.setStyleSheet("")
         self.right_dashboard_widget.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.right_dashboard_widget.setFrameShadow(QtWidgets.QFrame.Raised)
         self.right_dashboard_widget.setObjectName("right_dashboard_widget")
@@ -183,18 +188,19 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.header_frame = QtWidgets.QFrame(self.right_dashboard_widget)
         self.header_frame.setStyleSheet("QPushButton{\n"
-"background-color: #393E46;\n"
+"background-color: #617C8C;\n"
 "}\n"
 "\n"
 "QLabel{\n"
-"color: #FFD369;\n"
+"color: #F2F2F2;\n"
 "}\n"
 "\n"
 "QFrame{\n"
-"background-color: blue;\n"
+"background-color: #617C8C;\n"
 "border-radius: 10px;\n"
 "border: 5px;\n"
-"}")
+"}\n"
+"")
         self.header_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.header_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.header_frame.setObjectName("header_frame")
@@ -213,7 +219,7 @@ class Ui_MainWindow(object):
         self.menu_button.setMaximumSize(QtCore.QSize(32, 32))
         self.menu_button.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap("./resources/icons/icons8-menu-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-menu-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.menu_button.setIcon(icon4)
         self.menu_button.setIconSize(QtCore.QSize(24, 24))
         self.menu_button.setCheckable(True)
@@ -221,7 +227,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.addWidget(self.menu_button)
         self.menu_label = QtWidgets.QLabel(self.menu_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(12)
         font.setBold(False)
         font.setWeight(50)
@@ -233,7 +239,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addItem(spacerItem2)
         self.title_frame = QtWidgets.QFrame(self.header_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         font.setBold(False)
         font.setWeight(50)
@@ -246,7 +252,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.title_label = QtWidgets.QLabel(self.title_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(18)
         font.setBold(False)
         font.setWeight(50)
@@ -267,7 +273,7 @@ class Ui_MainWindow(object):
         self.back_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.back_button.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap("./resources/icons/icons8-back-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-back-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.back_button.setIcon(icon5)
         self.back_button.setIconSize(QtCore.QSize(24, 24))
         self.back_button.setObjectName("back_button")
@@ -275,7 +281,7 @@ class Ui_MainWindow(object):
         self.minimize_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.minimize_button.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap("./resources/icons/icons8-subtract-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-subtract-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.minimize_button.setIcon(icon6)
         self.minimize_button.setIconSize(QtCore.QSize(24, 24))
         self.minimize_button.setObjectName("minimize_button")
@@ -283,7 +289,7 @@ class Ui_MainWindow(object):
         self.exit_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.exit_button.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap("./resources/icons/icons8-close-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-close-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.exit_button.setIcon(icon7)
         self.exit_button.setIconSize(QtCore.QSize(24, 24))
         self.exit_button.setObjectName("exit_button")
@@ -291,6 +297,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.app_controls_frame)
         self.verticalLayout_6.addWidget(self.header_frame)
         self.action_frame = QtWidgets.QFrame(self.right_dashboard_widget)
+        self.action_frame.setStyleSheet("")
         self.action_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.action_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.action_frame.setObjectName("action_frame")
@@ -298,11 +305,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.stackedWidget = QtWidgets.QStackedWidget(self.action_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         self.stackedWidget.setFont(font)
+        self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.budget_dash_frame = QtWidgets.QWidget()
+        self.budget_dash_frame.setStyleSheet("QFrame{\n"
+"background-color: #617C8C;\n"
+"border-radius: 10px;\n"
+"border: 5px;\n"
+"}\n"
+"")
         self.budget_dash_frame.setObjectName("budget_dash_frame")
         self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.budget_dash_frame)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
@@ -315,7 +329,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.bd_title_label = QtWidgets.QLabel(self.bd_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         self.bd_title_label.setFont(font)
         self.bd_title_label.setObjectName("bd_title_label")
@@ -459,6 +473,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addWidget(self.main_bd_frame)
         self.stackedWidget.addWidget(self.budget_dash_frame)
         self.add_budg_frame = QtWidgets.QWidget()
+        self.add_budg_frame.setStyleSheet("QFrame{\n"
+"background-color: #617C8C;\n"
+"border-radius: 10px;\n"
+"border: 5px;\n"
+"}\n"
+"")
         self.add_budg_frame.setObjectName("add_budg_frame")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.add_budg_frame)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
@@ -471,7 +491,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setObjectName("verticalLayout_12")
         self.ab_title_label = QtWidgets.QLabel(self.ab_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         font.setBold(False)
         font.setWeight(50)
@@ -544,6 +564,26 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.show_inc_frame, 1, 2, 1, 1)
         self.add_log_frame = QtWidgets.QFrame(self.main_ab_frame)
         self.add_log_frame.setMaximumSize(QtCore.QSize(180, 16777215))
+        self.add_log_frame.setStyleSheet("QComboBox{\n"
+"border: 2px solid #B6E1F2;\n"
+"border-radius: 5px;\n"
+"background-color: #617C8C;\n"
+"color: #F2F2F2;\n"
+"}\n"
+"\n"
+"QLineEdit{\n"
+"border: 2px solid #B6E1F2;\n"
+"border-radius: 5px;\n"
+"background-color: #617C8C;\n"
+"color: #F2F2F2;\n"
+"}\n"
+"\n"
+"QRadioButton{\n"
+"border: 2px solid #B6E1F2;\n"
+"border-radius: 5px;\n"
+"background-color: #617C8C;\n"
+"color: #F2F2F2;\n"
+"}")
         self.add_log_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.add_log_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.add_log_frame.setObjectName("add_log_frame")
@@ -553,11 +593,12 @@ class Ui_MainWindow(object):
         self.ab_date_frame = QtWidgets.QFrame(self.add_log_frame)
         self.ab_date_frame.setMinimumSize(QtCore.QSize(0, 30))
         self.ab_date_frame.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.ab_date_frame.setStyleSheet("")
         self.ab_date_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.ab_date_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ab_date_frame.setObjectName("ab_date_frame")
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.ab_date_frame)
-        self.horizontalLayout_11.setContentsMargins(9, 9, 9, 9)
+        self.horizontalLayout_11.setContentsMargins(3, 3, 3, 3)
         self.horizontalLayout_11.setSpacing(3)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
         self.year_combo = QtWidgets.QComboBox(self.ab_date_frame)
@@ -572,10 +613,12 @@ class Ui_MainWindow(object):
         self.ab_type_frame = QtWidgets.QFrame(self.add_log_frame)
         self.ab_type_frame.setMinimumSize(QtCore.QSize(0, 25))
         self.ab_type_frame.setMaximumSize(QtCore.QSize(16777215, 40))
+        self.ab_type_frame.setStyleSheet("")
         self.ab_type_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.ab_type_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ab_type_frame.setObjectName("ab_type_frame")
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.ab_type_frame)
+        self.horizontalLayout_12.setContentsMargins(3, 3, 3, 3)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.inc_radio = QtWidgets.QRadioButton(self.ab_type_frame)
         self.inc_radio.setMinimumSize(QtCore.QSize(0, 20))
@@ -629,6 +672,8 @@ class Ui_MainWindow(object):
         self.ab_save_button.setMinimumSize(QtCore.QSize(0, 25))
         self.ab_save_button.setObjectName("ab_save_button")
         self.verticalLayout_21.addWidget(self.ab_save_button)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_21.addItem(spacerItem4)
         self.gridLayout_2.addWidget(self.add_log_frame, 1, 0, 1, 1)
         self.show_exp_frame = QtWidgets.QFrame(self.main_ab_frame)
         self.show_exp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -779,6 +824,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addWidget(self.main_ab_frame)
         self.stackedWidget.addWidget(self.add_budg_frame)
         self.invest_dash_frame = QtWidgets.QWidget()
+        self.invest_dash_frame.setStyleSheet("QFrame{\n"
+"background-color: #617C8C;\n"
+"border-radius: 10px;\n"
+"border: 5px;\n"
+"}\n"
+"")
         self.invest_dash_frame.setObjectName("invest_dash_frame")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.invest_dash_frame)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -787,10 +838,11 @@ class Ui_MainWindow(object):
         self.id_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.id_frame.setObjectName("id_frame")
         self.verticalLayout_14 = QtWidgets.QVBoxLayout(self.id_frame)
+        self.verticalLayout_14.setContentsMargins(3, 3, 3, 3)
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.id_title_label = QtWidgets.QLabel(self.id_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         self.id_title_label.setFont(font)
         self.id_title_label.setObjectName("id_title_label")
@@ -810,6 +862,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.main_id_frame)
         self.stackedWidget.addWidget(self.invest_dash_frame)
         self.add_inv_frame = QtWidgets.QWidget()
+        self.add_inv_frame.setStyleSheet("QFrame{\n"
+"background-color: #617C8C;\n"
+"border-radius: 10px;\n"
+"border: 5px;\n"
+"}\n"
+"")
         self.add_inv_frame.setObjectName("add_inv_frame")
         self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.add_inv_frame)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
@@ -818,10 +876,11 @@ class Ui_MainWindow(object):
         self.ai_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ai_frame.setObjectName("ai_frame")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.ai_frame)
+        self.verticalLayout_15.setContentsMargins(3, 3, 3, 3)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.ai_title_label = QtWidgets.QLabel(self.ai_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setPointSize(14)
         self.ai_title_label.setFont(font)
         self.ai_title_label.setObjectName("ai_title_label")
@@ -843,6 +902,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.stackedWidget)
         self.verticalLayout_6.addWidget(self.action_frame)
         self.footer_frame = QtWidgets.QFrame(self.right_dashboard_widget)
+        self.footer_frame.setStyleSheet("QFrame{\n"
+"background-color: #617C8C;\n"
+"border-radius: 10px;\n"
+"border: 5px;\n"
+"}\n"
+"")
         self.footer_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.footer_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.footer_frame.setObjectName("footer_frame")
@@ -850,7 +915,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.copyright_frame = QtWidgets.QFrame(self.footer_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setBold(False)
         font.setWeight(50)
         self.copyright_frame.setFont(font)
@@ -861,7 +926,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.copyright_label = QtWidgets.QLabel(self.copyright_frame)
         font = QtGui.QFont()
-        font.setFamily("ACETONE")
+        font.setFamily("Futura")
         font.setBold(False)
         font.setWeight(50)
         self.copyright_label.setFont(font)
@@ -874,7 +939,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
-        self.menu_button.toggled['bool'].connect(self.left_menu_widget.update) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -903,6 +967,9 @@ class Ui_MainWindow(object):
         self.ab_incamo_label.setText(_translate("MainWindow", "Amount"))
         self.inc_radio.setText(_translate("MainWindow", "Income"))
         self.exp_radio.setText(_translate("MainWindow", "Expense"))
+        self.place_edit.setPlaceholderText(_translate("MainWindow", "Place"))
+        self.title_edit.setPlaceholderText(_translate("MainWindow", "Title"))
+        self.amount_edit.setPlaceholderText(_translate("MainWindow", "Amount"))
         self.ab_save_button.setText(_translate("MainWindow", "Save"))
         self.ab_exptit_label.setText(_translate("MainWindow", "Expense"))
         self.ab_exppla_label.setText(_translate("MainWindow", "Place"))
@@ -916,7 +983,7 @@ class Ui_MainWindow(object):
         self.ab_balval_label.setText(_translate("MainWindow", "b val"))
         self.id_title_label.setText(_translate("MainWindow", "Investements dashboard"))
         self.ai_title_label.setText(_translate("MainWindow", "Add investement log"))
-        self.copyright_label.setText(_translate("MainWindow", "Copyright"))
+        self.copyright_label.setText(_translate("MainWindow", "Copyright Konrad Bik"))
 import resources_rc
 
 
