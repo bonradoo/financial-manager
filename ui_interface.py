@@ -512,6 +512,10 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(3, 3, 3, 3)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.show_inc_frame = QtWidgets.QFrame(self.main_ab_frame)
+        self.show_inc_frame.setStyleSheet("*{\n"
+"background-color: #B6E1F2;\n"
+"color: black;\n"
+"}")
         self.show_inc_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.show_inc_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.show_inc_frame.setObjectName("show_inc_frame")
@@ -676,6 +680,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_21.addItem(spacerItem4)
         self.gridLayout_2.addWidget(self.add_log_frame, 1, 0, 1, 1)
         self.show_exp_frame = QtWidgets.QFrame(self.main_ab_frame)
+        self.show_exp_frame.setStyleSheet("*{\n"
+"background-color: #B6E1F2;\n"
+"color: black;\n"
+"}")
         self.show_exp_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.show_exp_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.show_exp_frame.setObjectName("show_exp_frame")
@@ -940,6 +948,23 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.place_edit, self.title_edit)
+        MainWindow.setTabOrder(self.title_edit, self.amount_edit)
+        MainWindow.setTabOrder(self.amount_edit, self.ab_save_button)
+        MainWindow.setTabOrder(self.ab_save_button, self.year_combo)
+        MainWindow.setTabOrder(self.year_combo, self.month_combo)
+        MainWindow.setTabOrder(self.month_combo, self.inc_radio)
+        MainWindow.setTabOrder(self.inc_radio, self.exp_radio)
+        MainWindow.setTabOrder(self.exp_radio, self.ab_exptab_table)
+        MainWindow.setTabOrder(self.ab_exptab_table, self.ab_inctab_table)
+        MainWindow.setTabOrder(self.ab_inctab_table, self.menu_button)
+        MainWindow.setTabOrder(self.menu_button, self.show_bud_button)
+        MainWindow.setTabOrder(self.show_bud_button, self.add_log_button)
+        MainWindow.setTabOrder(self.add_log_button, self.show_inv_button)
+        MainWindow.setTabOrder(self.show_inv_button, self.add_inv_button)
+        MainWindow.setTabOrder(self.add_inv_button, self.back_button)
+        MainWindow.setTabOrder(self.back_button, self.minimize_button)
+        MainWindow.setTabOrder(self.minimize_button, self.exit_button)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

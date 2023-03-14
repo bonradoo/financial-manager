@@ -1147,6 +1147,12 @@ border: 5px;
                  </property>
                  <item row="1" column="2">
                   <widget class="QFrame" name="show_inc_frame">
+                   <property name="styleSheet">
+                    <string notr="true">*{
+background-color: #B6E1F2;
+color: black;
+}</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -1608,6 +1614,12 @@ color: #F2F2F2;
                  </item>
                  <item row="1" column="1">
                   <widget class="QFrame" name="show_exp_frame">
+                   <property name="styleSheet">
+                    <string notr="true">*{
+background-color: #B6E1F2;
+color: black;
+}</string>
+                   </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -2156,6 +2168,26 @@ border: 5px;
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>place_edit</tabstop>
+  <tabstop>title_edit</tabstop>
+  <tabstop>amount_edit</tabstop>
+  <tabstop>ab_save_button</tabstop>
+  <tabstop>year_combo</tabstop>
+  <tabstop>month_combo</tabstop>
+  <tabstop>inc_radio</tabstop>
+  <tabstop>exp_radio</tabstop>
+  <tabstop>ab_exptab_table</tabstop>
+  <tabstop>ab_inctab_table</tabstop>
+  <tabstop>menu_button</tabstop>
+  <tabstop>show_bud_button</tabstop>
+  <tabstop>add_log_button</tabstop>
+  <tabstop>show_inv_button</tabstop>
+  <tabstop>add_inv_button</tabstop>
+  <tabstop>back_button</tabstop>
+  <tabstop>minimize_button</tabstop>
+  <tabstop>exit_button</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

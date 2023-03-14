@@ -11,7 +11,6 @@ from Custom_Widgets import * #QT-PyQt-PySide-Custom-Widgets
 import misc
 
 def setTotals():
-    
     filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
     print(filePath)
     totals = misc.returnTotals(filePath)
@@ -22,13 +21,14 @@ def setTotals():
 def setYear():
     yearArr = misc.getYearArr('./bin/log/')
     ui.year_combo.addItems(yearArr)
-    # ui.year_combo.setCurrentIndex(len(yearArr)-1)
+    ui.year_combo.setCurrentIndex(len(yearArr)-1)
 
 
 def setMonth():
     ui.month_combo.clear()
     monthArr = misc.getMonthArr('./bin/log/' + ui.year_combo.currentText() + '/')
     ui.month_combo.addItems(str(month).strip('.txt') for month in monthArr)
+    ui.month_combo.setCurrentIndex(len(monthArr)-1)
     setTotals()
 
 
@@ -45,6 +45,13 @@ def switchPages():
     ui.show_inv_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(2))
     ui.add_inv_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(3))
     
+def clearEdits():
+    saveLog()
+    ui.place_edit.clear()
+    ui.title_edit.clear()
+    ui.amount_edit.clear()
+    ui.place_edit.setFocus()
+    setTotals()
 
 def controls():
     ui.exit_button.clicked.connect(sys.exit)
@@ -58,6 +65,10 @@ def controls():
     # Set totals refreshers
     ui.ab_save_button.clicked.connect(setTotals)
     ui.month_combo.activated.connect(setTotals)
+
+    ui.place_edit.returnPressed.connect(clearEdits)
+    ui.title_edit.returnPressed.connect(clearEdits)
+    ui.amount_edit.returnPressed.connect(clearEdits)
 
 
 def saveLog():
@@ -77,6 +88,8 @@ def saveLog():
 
 if __name__ == "__main__":
     misc.createFiles()
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
 
     app = QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
