@@ -12,7 +12,6 @@ import misc
 
 def setTotals():
     filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
-    print(filePath)
     totals = misc.returnTotals(filePath)
     ui.ab_expval_label.setText(totals[0])
     ui.ab_incval_label.setText(totals[1])
@@ -35,6 +34,14 @@ def setMonth():
 def leftSlideMenu():
     if ui.left_menu_widget.width() == 0: newWidth = 184
     else: newWidth = 0
+
+    # print(ui.left_menu_widget.width())
+    # animation = QtCore.QPropertyAnimation(ui.left_menu_widget, b'maximumWidth')
+    # animation.setStartValue(curWidth)
+    # animation.setEndValue(newWidth)
+    # animation.setDuration(500)
+    # animation.start()
+    # print(ui.left_menu_widget.height())
 
     ui.left_menu_widget.setMaximumWidth(newWidth)
 

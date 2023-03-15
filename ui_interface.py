@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Financial Tracker")
         MainWindow.resize(1114, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("*{\n"
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.ft_pixelmap.setMinimumSize(QtCore.QSize(40, 40))
         self.ft_pixelmap.setMaximumSize(QtCore.QSize(40, 40))
         self.ft_pixelmap.setText("")
-        self.ft_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-pie-chart-100.png"))
+        self.ft_pixelmap.setPixmap(QtGui.QPixmap(".\\resources/icons/icons8-pie-chart-100.png"))
         self.ft_pixelmap.setScaledContents(True)
         self.ft_pixelmap.setObjectName("ft_pixelmap")
         self.horizontalLayout_6.addWidget(self.ft_pixelmap)
@@ -91,7 +91,7 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.show_bud_button.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(".\\resources/icons_black/icons8-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.show_bud_button.setIcon(icon)
         self.show_bud_button.setObjectName("show_bud_button")
         self.verticalLayout_3.addWidget(self.show_bud_button)
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.add_log_button.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-add-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(".\\resources/icons_black/icons8-add-database-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.add_log_button.setIcon(icon1)
         self.add_log_button.setObjectName("add_log_button")
         self.verticalLayout_3.addWidget(self.add_log_button)
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.show_inv_button.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-area-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(".\\resources/icons_black/icons8-combo-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.show_inv_button.setIcon(icon2)
         self.show_inv_button.setObjectName("show_inv_button")
         self.verticalLayout_3.addWidget(self.show_inv_button)
@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         font.setPointSize(12)
         self.add_inv_button.setFont(font)
         icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/resources/resources/icons_black/icons8-line-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon3.addPixmap(QtGui.QPixmap(".\\resources/icons_black/icons8-line-chart-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.add_inv_button.setIcon(icon3)
         self.add_inv_button.setObjectName("add_inv_button")
         self.verticalLayout_3.addWidget(self.add_inv_button)
@@ -164,7 +164,7 @@ class Ui_MainWindow(object):
         self.contact_pixelmap.setMinimumSize(QtCore.QSize(30, 30))
         self.contact_pixelmap.setMaximumSize(QtCore.QSize(30, 30))
         self.contact_pixelmap.setText("")
-        self.contact_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-contact-details-100.png"))
+        self.contact_pixelmap.setPixmap(QtGui.QPixmap(".\\resources/icons/icons8-contact-details-100.png"))
         self.contact_pixelmap.setScaledContents(True)
         self.contact_pixelmap.setObjectName("contact_pixelmap")
         self.gridLayout_5.addWidget(self.contact_pixelmap, 1, 0, 1, 1)
@@ -172,7 +172,7 @@ class Ui_MainWindow(object):
         self.about_pixelmap.setMinimumSize(QtCore.QSize(30, 30))
         self.about_pixelmap.setMaximumSize(QtCore.QSize(30, 30))
         self.about_pixelmap.setText("")
-        self.about_pixelmap.setPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-info-squared-100.png"))
+        self.about_pixelmap.setPixmap(QtGui.QPixmap(".\\resources/icons/icons8-info-squared-100.png"))
         self.about_pixelmap.setScaledContents(True)
         self.about_pixelmap.setObjectName("about_pixelmap")
         self.gridLayout_5.addWidget(self.about_pixelmap, 0, 0, 1, 1)
@@ -219,7 +219,7 @@ class Ui_MainWindow(object):
         self.menu_button.setMaximumSize(QtCore.QSize(32, 32))
         self.menu_button.setText("")
         icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-menu-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon4.addPixmap(QtGui.QPixmap(".\\resources/icons/icons8-menu-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.menu_button.setIcon(icon4)
         self.menu_button.setIconSize(QtCore.QSize(24, 24))
         self.menu_button.setCheckable(True)
@@ -273,7 +273,7 @@ class Ui_MainWindow(object):
         self.back_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.back_button.setText("")
         icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-back-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon5.addPixmap(QtGui.QPixmap(".\\resources/icons/icons8-back-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.back_button.setIcon(icon5)
         self.back_button.setIconSize(QtCore.QSize(24, 24))
         self.back_button.setObjectName("back_button")
@@ -281,7 +281,7 @@ class Ui_MainWindow(object):
         self.minimize_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.minimize_button.setText("")
         icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-subtract-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon6.addPixmap(QtGui.QPixmap(".\\resources/icons/icons8-subtract-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.minimize_button.setIcon(icon6)
         self.minimize_button.setIconSize(QtCore.QSize(24, 24))
         self.minimize_button.setObjectName("minimize_button")
@@ -289,7 +289,7 @@ class Ui_MainWindow(object):
         self.exit_button = QtWidgets.QPushButton(self.app_controls_frame)
         self.exit_button.setText("")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/resources/resources/icons/icons8-close-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(".\\resources/icons/icons8-close-100.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.exit_button.setIcon(icon7)
         self.exit_button.setIconSize(QtCore.QSize(24, 24))
         self.exit_button.setObjectName("exit_button")
@@ -571,21 +571,21 @@ class Ui_MainWindow(object):
         self.add_log_frame.setStyleSheet("QComboBox{\n"
 "border: 2px solid #B6E1F2;\n"
 "border-radius: 5px;\n"
-"background-color: #617C8C;\n"
+"background-color: #51636b;\n"
 "color: #F2F2F2;\n"
 "}\n"
 "\n"
 "QLineEdit{\n"
 "border: 2px solid #B6E1F2;\n"
 "border-radius: 5px;\n"
-"background-color: #617C8C;\n"
+"background-color: #51636b;\n"
 "color: #F2F2F2;\n"
 "}\n"
 "\n"
 "QRadioButton{\n"
 "border: 2px solid #B6E1F2;\n"
 "border-radius: 5px;\n"
-"background-color: #617C8C;\n"
+"background-color: #51636b;\n"
 "color: #F2F2F2;\n"
 "}")
         self.add_log_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)

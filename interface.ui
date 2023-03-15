@@ -109,7 +109,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-pie-chart-100.png</pixmap>
+             <pixmap>resources/icons/icons8-pie-chart-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -175,8 +175,8 @@ border: 5px;
              <string>Show budget</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/resources/resources/icons_black/icons8-database-100.png</normaloff>:/resources/resources/icons_black/icons8-database-100.png</iconset>
+             <iconset>
+              <normaloff>resources/icons_black/icons8-database-100.png</normaloff>resources/icons_black/icons8-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -200,8 +200,8 @@ border: 5px;
              <string>Add log</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/resources/resources/icons_black/icons8-add-database-100.png</normaloff>:/resources/resources/icons_black/icons8-add-database-100.png</iconset>
+             <iconset>
+              <normaloff>resources/icons_black/icons8-add-database-100.png</normaloff>resources/icons_black/icons8-add-database-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -239,8 +239,8 @@ border: 5px;
              <string>Show investements</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/resources/resources/icons_black/icons8-area-chart-100.png</normaloff>:/resources/resources/icons_black/icons8-area-chart-100.png</iconset>
+             <iconset>
+              <normaloff>resources/icons_black/icons8-combo-chart-100.png</normaloff>resources/icons_black/icons8-combo-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -262,8 +262,8 @@ border: 5px;
              <string>Add investement</string>
             </property>
             <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/resources/resources/icons_black/icons8-line-chart-100.png</normaloff>:/resources/resources/icons_black/icons8-line-chart-100.png</iconset>
+             <iconset>
+              <normaloff>resources/icons_black/icons8-line-chart-100.png</normaloff>resources/icons_black/icons8-line-chart-100.png</iconset>
             </property>
            </widget>
           </item>
@@ -352,7 +352,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-contact-details-100.png</pixmap>
+             <pixmap>resources/icons/icons8-contact-details-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -377,7 +377,7 @@ border: 5px;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="resources.qrc">:/resources/resources/icons/icons8-info-squared-100.png</pixmap>
+             <pixmap>resources/icons/icons8-info-squared-100.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
@@ -490,8 +490,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
-                 <normaloff>:/resources/resources/icons/icons8-menu-100.png</normaloff>:/resources/resources/icons/icons8-menu-100.png</iconset>
+                <iconset>
+                 <normaloff>resources/icons/icons8-menu-100.png</normaloff>resources/icons/icons8-menu-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -614,8 +614,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
-                 <normaloff>:/resources/resources/icons/icons8-back-100.png</normaloff>:/resources/resources/icons/icons8-back-100.png</iconset>
+                <iconset>
+                 <normaloff>resources/icons/icons8-back-100.png</normaloff>resources/icons/icons8-back-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -631,8 +631,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
-                 <normaloff>:/resources/resources/icons/icons8-subtract-100.png</normaloff>:/resources/resources/icons/icons8-subtract-100.png</iconset>
+                <iconset>
+                 <normaloff>resources/icons/icons8-subtract-100.png</normaloff>resources/icons/icons8-subtract-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -648,8 +648,8 @@ border: 5px;
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="resources.qrc">
-                 <normaloff>:/resources/resources/icons/icons8-close-100.png</normaloff>:/resources/resources/icons/icons8-close-100.png</iconset>
+                <iconset>
+                 <normaloff>resources/icons/icons8-close-100.png</normaloff>resources/icons/icons8-close-100.png</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1290,21 +1290,21 @@ color: black;
                     <string notr="true">QComboBox{
 border: 2px solid #B6E1F2;
 border-radius: 5px;
-background-color: #617C8C;
+background-color: #51636b;
 color: #F2F2F2;
 }
 
 QLineEdit{
 border: 2px solid #B6E1F2;
 border-radius: 5px;
-background-color: #617C8C;
+background-color: #51636b;
 color: #F2F2F2;
 }
 
 QRadioButton{
 border: 2px solid #B6E1F2;
 border-radius: 5px;
-background-color: #617C8C;
+background-color: #51636b;
 color: #F2F2F2;
 }</string>
                    </property>
