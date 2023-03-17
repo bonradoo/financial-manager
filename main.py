@@ -10,12 +10,23 @@ from ui_interface import *
 from Custom_Widgets import * #QT-PyQt-PySide-Custom-Widgets
 import misc
 
+# saving links for future me
+# https://doc.qt.io/qtforpython/tutorials/expenses/expenses.html
+# https://www.youtube.com/watch?v=MHn3ZTWcyXk
+# https://stackoverflow.com/questions/48362864/how-to-insert-qchartview-in-form-with-qt-designer
+# https://www.youtube.com/watch?v=a9Mynu6pC4U
+
 def setTotals():
     filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
     totals = misc.returnTotals(filePath)
+    
     ui.ab_expval_label.setText(totals[0])
     ui.ab_incval_label.setText(totals[1])
     ui.ab_balval_label.setText(totals[2])
+
+    ui.ab_expval_label_2.setText(totals[0])
+    ui.ab_incval_label_2.setText(totals[1])
+    ui.ab_balval_label_2.setText(totals[2])
 
 def setYear():
     yearArr = misc.getYearArr('./bin/log/')
@@ -92,6 +103,22 @@ def saveLog():
     except:
         print('Error')
 
+def pieChart():
+    series = QtCharts.QPieSeries()
+    series.append('Python', 20)
+    series.append('C++', 30)
+    series.append('C', 10)
+
+    chart = QtCharts.QChart()
+    chart.addSeries(series)
+    chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
+    chart.setTitle('Income')
+
+    chartView = QtCharts.QChartView(chart)
+    chartView.setRenderHint(QPainter.Antialiasing)
+
+    # ui.exp_graph_frame
+
 
 if __name__ == "__main__":
     misc.createFiles()
@@ -107,5 +134,6 @@ if __name__ == "__main__":
     controls()
     switchPages()
     setYear()
+    pieChart()
     
     sys.exit(app.exec_())
