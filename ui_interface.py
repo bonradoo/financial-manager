@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("Financial Tracker")
+        MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1114, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("*{\n"
@@ -311,7 +311,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setObjectName("stackedWidget")
         self.budget_dash_frame = QtWidgets.QWidget()
-        self.budget_dash_frame.setStyleSheet("QFrame{\n"
+        self.budget_dash_frame.setStyleSheet("QWidget{\n"
 "background-color: #617C8C;\n"
 "border-radius: 10px;\n"
 "border: 5px;\n"
@@ -459,16 +459,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.bd_graphs_frame)
         self.horizontalLayout_20.setContentsMargins(3, 3, 3, 3)
         self.horizontalLayout_20.setObjectName("horizontalLayout_20")
-        self.exp_graph_frame = QtWidgets.QFrame(self.bd_graphs_frame)
-        self.exp_graph_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.exp_graph_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.exp_graph_frame.setObjectName("exp_graph_frame")
-        self.horizontalLayout_20.addWidget(self.exp_graph_frame)
-        self.inc_graph_frame = QtWidgets.QFrame(self.bd_graphs_frame)
-        self.inc_graph_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.inc_graph_frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.inc_graph_frame.setObjectName("inc_graph_frame")
-        self.horizontalLayout_20.addWidget(self.inc_graph_frame)
+        self.bd_inc_widget = QtWidgets.QWidget(self.bd_graphs_frame)
+        self.bd_inc_widget.setObjectName("bd_inc_widget")
+        self.horizontalLayout_20.addWidget(self.bd_inc_widget)
+        self.bd_exp_widget = QtWidgets.QWidget(self.bd_graphs_frame)
+        self.bd_exp_widget.setObjectName("bd_exp_widget")
+        self.horizontalLayout_20.addWidget(self.bd_exp_widget)
         self.gridLayout.addWidget(self.bd_graphs_frame, 1, 0, 1, 1)
         self.verticalLayout_10.addWidget(self.main_bd_frame)
         self.stackedWidget.addWidget(self.budget_dash_frame)
@@ -946,7 +942,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.place_edit, self.title_edit)
         MainWindow.setTabOrder(self.title_edit, self.amount_edit)

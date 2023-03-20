@@ -112,12 +112,27 @@ def pieChart():
     chart = QtCharts.QChart()
     chart.addSeries(series)
     chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
-    chart.setTitle('Income')
+    chart.setTitle('Test')
 
     chartView = QtCharts.QChartView(chart)
     chartView.setRenderHint(QPainter.Antialiasing)
 
-    # ui.exp_graph_frame
+    lay = QtWidgets.QHBoxLayout()
+    # lay.addWidget(chartView)
+
+    ui.bd_exp_widget.setLayout(lay)
+
+
+    # print(type(chartView))
+    # chartView.sizePolicy(QtWidgets.QFrame.Expanding, QtWidgets.QFrame.Expanding)
+    # size = QtWidgets.QSizePolicy(QtWidgets.QWidget.Expanding, QtWidgets.QWidget.Expanding)
+    # chartView.setSizePolicy(size)
+    
+    # layout = QtWidgets.QHBoxLayout()
+    # layout.addWidget(chartView)
+    # ui.exp_graph_frame.setLayout(layout)
+    
+    
 
 
 if __name__ == "__main__":
