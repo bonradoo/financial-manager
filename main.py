@@ -1,6 +1,7 @@
 import sys
 import os
-from PyQt5 import QtWidgets
+# from PyQt5 import QtWidgets
+from PySide2 import QtWidgets
 from PySide2.QtGui import QPainter
 from PySide2.QtWidgets import QMainWindow, QApplication
 from PySide2.QtCharts import QtCharts
@@ -19,6 +20,7 @@ import misc
 def setTotals():
     filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
     totals = misc.returnTotals(filePath)
+    crateTables(filePath)
     
     ui.ab_expval_label.setText(totals[0])
     ui.ab_incval_label.setText(totals[1])
@@ -40,6 +42,7 @@ def setMonth():
     ui.month_combo.addItems(str(month).strip('.txt') for month in monthArr)
     ui.month_combo.setCurrentIndex(len(monthArr)-1)
     setTotals()
+    
 
 
 def leftSlideMenu():
@@ -64,7 +67,6 @@ def switchPages():
     ui.add_inv_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(3))
     
 def clearEdits():
-    saveLog()
     ui.place_edit.clear()
     ui.title_edit.clear()
     ui.amount_edit.clear()
@@ -84,9 +86,9 @@ def controls():
     ui.ab_save_button.clicked.connect(setTotals)
     ui.month_combo.activated.connect(setTotals)
 
-    ui.place_edit.returnPressed.connect(clearEdits)
-    ui.title_edit.returnPressed.connect(clearEdits)
-    ui.amount_edit.returnPressed.connect(clearEdits)
+    ui.place_edit.returnPressed.connect(saveLog)
+    ui.title_edit.returnPressed.connect(saveLog)
+    ui.amount_edit.returnPressed.connect(saveLog)
 
 
 def saveLog():
@@ -100,6 +102,7 @@ def saveLog():
 
         filePath = './bin/log/' +  ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
         misc.saveToFile([log_type, log_place, log_title, float(log_amount)], filePath)
+        clearEdits()
     except:
         print('Error')
 
@@ -114,13 +117,13 @@ def pieChart():
     chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
     chart.setTitle('Test')
 
-    chartView = QtCharts.QChartView(chart)
-    chartView.setRenderHint(QPainter.Antialiasing)
+    # chartView = QtCharts.QChartView(chart)
+    # chartView.setRenderHint(QPainter.Antialiasing)
 
-    lay = QtWidgets.QHBoxLayout()
+    # lay = QtWidgets.QHBoxLayout()
     # lay.addWidget(chartView)
 
-    ui.bd_exp_widget.setLayout(lay)
+    # ui.bd_exp_widget.setLayout(lay)
 
 
     # print(type(chartView))
@@ -132,6 +135,20 @@ def pieChart():
     # layout.addWidget(chartView)
     # ui.exp_graph_frame.setLayout(layout)
     
+
+def crateTables(filePath):
+    try:
+        # filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+        with open(filePath, 'r') as file:
+            records = file.readlines()
+            print(records)
+        ui.ab_exptab_widget.setRowCount(len(records))
+        ui.ab_exptab_widget.setColumnCount(3)
+        ui.ab_exptab_widget.setColumnWidth(0,80)
+        ui.ab_exptab_widget.setColumnWidth(1,80)
+        ui.ab_exptab_widget.setColumnWidth(2,80)
+    except:
+        print('Error occurred')
     
 
 

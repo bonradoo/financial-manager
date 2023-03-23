@@ -689,7 +689,7 @@ border: 5px;
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="budget_dash_frame">
              <property name="styleSheet">
@@ -1256,7 +1256,7 @@ color: black;
                         <number>3</number>
                        </property>
                        <item>
-                        <widget class="QTableView" name="ab_inctab_table"/>
+                        <widget class="QTableWidget" name="ab_inctab_widget"/>
                        </item>
                       </layout>
                      </widget>
@@ -1723,7 +1723,7 @@ color: black;
                         <number>3</number>
                        </property>
                        <item>
-                        <widget class="QTableView" name="ab_exptab_table"/>
+                        <widget class="QTableWidget" name="ab_exptab_widget"/>
                        </item>
                       </layout>
                      </widget>
@@ -2163,8 +2163,6 @@ border: 5px;
   <tabstop>month_combo</tabstop>
   <tabstop>inc_radio</tabstop>
   <tabstop>exp_radio</tabstop>
-  <tabstop>ab_exptab_table</tabstop>
-  <tabstop>ab_inctab_table</tabstop>
   <tabstop>menu_button</tabstop>
   <tabstop>show_bud_button</tabstop>
   <tabstop>add_log_button</tabstop>
