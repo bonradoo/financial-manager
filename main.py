@@ -138,15 +138,48 @@ def pieChart():
 
 def crateTables(filePath):
     try:
-        # filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
-        with open(filePath, 'r') as file:
-            records = file.readlines()
-            print(records)
-        ui.ab_exptab_widget.setRowCount(len(records))
+        with open(filePath, 'r', encoding='utf-8') as file:
+            records = [line.strip('\n').split(',') for line in file.readlines()]
+            exp_list = []
+            inc_list = []
+            for item in records:
+                if item[0] == 'exp': exp_list.append([item[1], item[2], item[3]])
+                elif item[0] == 'inc': inc_list.append([item[1], item[2], item[3]])
+
+        # Expense
+        ui.ab_exptab_widget.setRowCount(len(exp_list))
         ui.ab_exptab_widget.setColumnCount(3)
-        ui.ab_exptab_widget.setColumnWidth(0,80)
-        ui.ab_exptab_widget.setColumnWidth(1,80)
-        ui.ab_exptab_widget.setColumnWidth(2,80)
+        ui.ab_exptab_widget.setHorizontalHeaderLabels(('Place', 'Title', 'Amount'))
+
+        ui.ab_exptab_widget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.Stretch)
+        ui.ab_exptab_widget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
+        ui.ab_exptab_widget.horizontalHeader().setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeMode.Stretch)    
+
+        exp_row_index = 0
+        for exp_item in exp_list:
+            print(exp_item)
+            ui.ab_exptab_widget.setItem(exp_row_index, 0, QtWidgets.QTableWidgetItem(exp_item[0]))
+            ui.ab_exptab_widget.setItem(exp_row_index, 1, QtWidgets.QTableWidgetItem(exp_item[1]))
+            ui.ab_exptab_widget.setItem(exp_row_index, 2, QtWidgets.QTableWidgetItem(exp_item[2]))
+            exp_row_index += 1
+
+        # Income
+        ui.ab_inctab_widget.setRowCount(len(inc_list))
+        ui.ab_inctab_widget.setColumnCount(3)
+        ui.ab_inctab_widget.setHorizontalHeaderLabels(('Place', 'Title', 'Amount'))
+        
+        ui.ab_inctab_widget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.Stretch)
+        ui.ab_inctab_widget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
+        ui.ab_inctab_widget.horizontalHeader().setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+        inc_row_index = 0
+        for inc_item in inc_list:
+            ui.ab_inctab_widget.setItem(inc_row_index, 0, QtWidgets.QTableWidgetItem(inc_item[0]))
+            ui.ab_inctab_widget.setItem(inc_row_index, 1, QtWidgets.QTableWidgetItem(inc_item[1]))
+            ui.ab_inctab_widget.setItem(inc_row_index, 2, QtWidgets.QTableWidgetItem(inc_item[2]))
+            inc_row_index += 1
+
+        
     except:
         print('Error occurred')
     
@@ -159,6 +192,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
+    # MainWindow.setWindowFlags(Qt.FramelessWindowHint)
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()

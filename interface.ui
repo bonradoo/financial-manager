@@ -693,7 +693,7 @@ border: 5px;
             </property>
             <widget class="QWidget" name="budget_dash_frame">
              <property name="styleSheet">
-              <string notr="true">QWidget{
+              <string notr="true">QFrame{
 background-color: #617C8C;
 border-radius: 10px;
 border: 5px;
@@ -860,6 +860,14 @@ border: 5px;
                             <layout class="QVBoxLayout" name="verticalLayout_31">
                              <item>
                               <widget class="QLabel" name="ab_texp_label_2">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
                                <property name="text">
                                 <string>Total expense</string>
                                </property>
@@ -922,6 +930,14 @@ border: 5px;
                             <layout class="QVBoxLayout" name="verticalLayout_33">
                              <item>
                               <widget class="QLabel" name="ab_tinc_label_2">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
                                <property name="text">
                                 <string>Total income</string>
                                </property>
@@ -984,6 +1000,14 @@ border: 5px;
                             <layout class="QVBoxLayout" name="verticalLayout_35">
                              <item>
                               <widget class="QLabel" name="ab_tbal_label_2">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
                                <property name="text">
                                 <string>Balance</string>
                                </property>
@@ -1042,10 +1066,26 @@ border: 5px;
                      <number>3</number>
                     </property>
                     <item>
-                     <widget class="QWidget" name="bd_inc_widget" native="true"/>
+                     <widget class="QWidget" name="bd_inc_widget" native="true">
+                      <property name="styleSheet">
+                       <string notr="true">QWidget{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}</string>
+                      </property>
+                     </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="bd_exp_widget" native="true"/>
+                     <widget class="QWidget" name="bd_exp_widget" native="true">
+                      <property name="styleSheet">
+                       <string notr="true">QWidget{
+background-color: #617C8C;
+border-radius: 10px;
+border: 5px;
+}</string>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -1175,56 +1215,16 @@ color: black;
                       <layout class="QVBoxLayout" name="verticalLayout_27">
                        <item>
                         <widget class="QLabel" name="ab_inctit_label_2">
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>10</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Income</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="ab_inctot_frame">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_14">
-                       <item>
-                        <widget class="QLabel" name="ab_incpla_label">
-                         <property name="text">
-                          <string>Place</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="ab_inctit_label">
-                         <property name="text">
-                          <string>Title</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="ab_incamo_label">
-                         <property name="text">
-                          <string>Amount</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -1256,7 +1256,23 @@ color: black;
                         <number>3</number>
                        </property>
                        <item>
-                        <widget class="QTableWidget" name="ab_inctab_widget"/>
+                        <widget class="QTableWidget" name="ab_inctab_widget">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="showGrid">
+                          <bool>true</bool>
+                         </property>
+                         <attribute name="horizontalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderHighlightSections">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                        </widget>
                        </item>
                       </layout>
                      </widget>
@@ -1360,6 +1376,12 @@ color: #F2F2F2;
                            <height>20</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
                         </widget>
                        </item>
                        <item>
@@ -1369,6 +1391,12 @@ color: #F2F2F2;
                            <width>0</width>
                            <height>20</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
                          </property>
                         </widget>
                        </item>
@@ -1419,6 +1447,12 @@ color: #F2F2F2;
                            <height>20</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Income</string>
                          </property>
@@ -1431,6 +1465,12 @@ color: #F2F2F2;
                            <width>0</width>
                            <height>20</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
                          </property>
                          <property name="text">
                           <string>Expense</string>
@@ -1475,6 +1515,12 @@ color: #F2F2F2;
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
                          <property name="placeholderText">
                           <string>Place</string>
                          </property>
@@ -1517,6 +1563,12 @@ color: #F2F2F2;
                            <width>0</width>
                            <height>30</height>
                           </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
                          </property>
                          <property name="placeholderText">
                           <string>Title</string>
@@ -1561,6 +1613,12 @@ color: #F2F2F2;
                            <height>30</height>
                           </size>
                          </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
                          <property name="placeholderText">
                           <string>Amount</string>
                          </property>
@@ -1576,6 +1634,14 @@ color: #F2F2F2;
                         <width>0</width>
                         <height>25</height>
                        </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Futura</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
                       </property>
                       <property name="text">
                        <string>Save</string>
@@ -1642,56 +1708,16 @@ color: black;
                       <layout class="QVBoxLayout" name="verticalLayout_28">
                        <item>
                         <widget class="QLabel" name="ab_exptit_label">
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>10</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Expense</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="ab_exptot_frame">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_13">
-                       <item>
-                        <widget class="QLabel" name="ab_exppla_label">
-                         <property name="text">
-                          <string>Place</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="ab_epotit_label">
-                         <property name="text">
-                          <string>Title</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="ab_expamo_label">
-                         <property name="text">
-                          <string>Amount</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignCenter</set>
@@ -1723,7 +1749,32 @@ color: black;
                         <number>3</number>
                        </property>
                        <item>
-                        <widget class="QTableWidget" name="ab_exptab_widget"/>
+                        <widget class="QTableWidget" name="ab_exptab_widget">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="alternatingRowColors">
+                          <bool>false</bool>
+                         </property>
+                         <property name="textElideMode">
+                          <enum>Qt::ElideRight</enum>
+                         </property>
+                         <property name="showGrid">
+                          <bool>true</bool>
+                         </property>
+                         <property name="gridStyle">
+                          <enum>Qt::SolidLine</enum>
+                         </property>
+                         <property name="cornerButtonEnabled">
+                          <bool>false</bool>
+                         </property>
+                         <attribute name="horizontalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                        </widget>
                        </item>
                       </layout>
                      </widget>
@@ -1796,6 +1847,14 @@ color: black;
                          <layout class="QVBoxLayout" name="verticalLayout_4">
                           <item>
                            <widget class="QLabel" name="ab_texp_label">
+                            <property name="font">
+                             <font>
+                              <family>Futura</family>
+                              <pointsize>9</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Total expense</string>
                             </property>
@@ -1858,6 +1917,14 @@ color: black;
                          <layout class="QVBoxLayout" name="verticalLayout_17">
                           <item>
                            <widget class="QLabel" name="ab_tinc_label">
+                            <property name="font">
+                             <font>
+                              <family>Futura</family>
+                              <pointsize>9</pointsize>
+                              <weight>75</weight>
+                              <bold>true</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Total income</string>
                             </property>
@@ -1920,6 +1987,14 @@ color: black;
                          <layout class="QVBoxLayout" name="verticalLayout_19">
                           <item>
                            <widget class="QLabel" name="ab_tbal_label">
+                            <property name="font">
+                             <font>
+                              <family>Futura</family>
+                              <pointsize>9</pointsize>
+                              <weight>50</weight>
+                              <bold>false</bold>
+                             </font>
+                            </property>
                             <property name="text">
                              <string>Balance</string>
                             </property>

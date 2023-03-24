@@ -15,3 +15,4 @@ exp,Pyszne,Jedzenie,65.49
 exp,Fuga Mundi,Billard,42
 exp,Biedronka,Piwo,3.69
 exp,Urbancard,Bilety,1.6
+inc,-,Na życie,1600.0
