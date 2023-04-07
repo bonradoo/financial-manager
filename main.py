@@ -35,16 +35,14 @@ def setYear():
     ui.year_combo.addItems(yearArr)
     ui.year_combo.setCurrentIndex(len(yearArr)-1)
 
-
 def setMonth():
     ui.month_combo.clear()
     monthArr = misc.getMonthArr('./bin/log/' + ui.year_combo.currentText() + '/')
+    print(monthArr)
     ui.month_combo.addItems(str(month).strip('.txt') for month in monthArr)
     ui.month_combo.setCurrentIndex(len(monthArr)-1)
     setTotals()
     
-
-
 def leftSlideMenu():
     if ui.left_menu_widget.width() == 0: newWidth = 184
     else: newWidth = 0
@@ -59,7 +57,6 @@ def leftSlideMenu():
 
     ui.left_menu_widget.setMaximumWidth(newWidth)
 
-
 def switchPages():
     ui.show_bud_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(0))
     ui.add_log_button.clicked.connect(lambda: ui.stackedWidget.setCurrentIndex(1))
@@ -71,6 +68,37 @@ def clearEdits():
     ui.title_edit.clear()
     ui.amount_edit.clear()
     ui.place_edit.setFocus()
+    setTotals()
+
+def deleteRow():
+    filePath = './bin/log/' + ui.year_combo.currentText() + '/' + ui.month_combo.currentText() + '.txt'
+    with open(filePath, 'r', encoding='utf-8') as file:
+        logs = [line.strip('\n').split(',') for line in file.readlines()]
+    expList = [log for log in logs if log[0]=='exp']
+    incList = [log for log in logs if log[0]=='inc']
+
+    indexes = []
+    if ui.ab_exptab_widget.selectionModel().selectedRows():
+        indexes = [index.row() for index in ui.ab_exptab_widget.selectionModel().selectedRows()]
+        for index in indexes: expList.pop(index)
+        ui.ab_exptab_widget.clearSelection()
+
+    elif ui.ab_inctab_widget.selectionModel().selectedRows():
+        indexes = [index.row() for index in ui.ab_inctab_widget.selectionModel().selectedRows()]
+        for index in indexes: incList.pop(index)
+        ui.ab_inctab_widget.clearSelection()
+        
+    if len(indexes)==0:
+        return
+    
+    result = [['Type','Place','Title','Amount']]
+    for element in incList: result.append(element)
+    for element in expList: result.append(element)
+
+    with open(filePath, 'w', encoding='utf-8') as file:
+        for line in result:
+            file.write(','.join(line) + '\n')
+
     setTotals()
 
 def controls():
@@ -90,7 +118,9 @@ def controls():
     ui.title_edit.returnPressed.connect(saveLog)
     ui.amount_edit.returnPressed.connect(saveLog)
 
-
+    QtWidgets.QShortcut(Qt.Key_Delete, ui.main_ab_frame, activated=deleteRow)
+    # QtWidgets.QShortcut(Qt.Key_Delete, ui.ab_inctab_widget, activated=deleteRow)
+    
 def saveLog():
     try:
         if ui.exp_radio.isChecked(): log_type = 'exp'
@@ -135,7 +165,6 @@ def pieChart():
     # layout.addWidget(chartView)
     # ui.exp_graph_frame.setLayout(layout)
     
-
 def crateTables(filePath):
     try:
         with open(filePath, 'r', encoding='utf-8') as file:
@@ -157,7 +186,6 @@ def crateTables(filePath):
 
         exp_row_index = 0
         for exp_item in exp_list:
-            print(exp_item)
             ui.ab_exptab_widget.setItem(exp_row_index, 0, QtWidgets.QTableWidgetItem(exp_item[0]))
             ui.ab_exptab_widget.setItem(exp_row_index, 1, QtWidgets.QTableWidgetItem(exp_item[1]))
             ui.ab_exptab_widget.setItem(exp_row_index, 2, QtWidgets.QTableWidgetItem(exp_item[2]))
@@ -183,8 +211,6 @@ def crateTables(filePath):
     except:
         print('Error occurred')
     
-
-
 if __name__ == "__main__":
     misc.createFiles()
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)

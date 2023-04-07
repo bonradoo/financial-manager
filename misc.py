@@ -9,8 +9,7 @@ def returnTotals(FP):
     totalInc = 0.00
     logs = []
     with open(FP, 'r', encoding='utf-8') as file:
-        for line in file.readlines(): logs.append(line.strip('\n'))
-    elements = [i.split(',') for i in logs]
+        elements = [line.strip('\n').split(',') for line in file.readlines()]
 
     for el in elements:
         if el[0] == 'inc': 

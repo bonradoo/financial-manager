@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1114</width>
-    <height>720</height>
+    <width>1299</width>
+    <height>821</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1171,116 +1171,7 @@ border: 5px;
                  <property name="bottomMargin">
                   <number>3</number>
                  </property>
-                 <item row="1" column="2">
-                  <widget class="QFrame" name="show_inc_frame">
-                   <property name="styleSheet">
-                    <string notr="true">*{
-background-color: #B6E1F2;
-color: black;
-}</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QVBoxLayout" name="verticalLayout_22">
-                    <property name="leftMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>3</number>
-                    </property>
-                    <item>
-                     <widget class="QFrame" name="ab_inctit_frame">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_27">
-                       <item>
-                        <widget class="QLabel" name="ab_inctit_label_2">
-                         <property name="font">
-                          <font>
-                           <family>Futura</family>
-                           <pointsize>10</pointsize>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Income</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="ab_inctab_frame">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_30">
-                       <property name="leftMargin">
-                        <number>3</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>3</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>3</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>3</number>
-                       </property>
-                       <item>
-                        <widget class="QTableWidget" name="ab_inctab_widget">
-                         <property name="enabled">
-                          <bool>true</bool>
-                         </property>
-                         <property name="showGrid">
-                          <bool>true</bool>
-                         </property>
-                         <attribute name="horizontalHeaderVisible">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="horizontalHeaderHighlightSections">
-                          <bool>true</bool>
-                         </attribute>
-                         <attribute name="verticalHeaderVisible">
-                          <bool>true</bool>
-                         </attribute>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
+                 <item row="0" column="0">
                   <widget class="QFrame" name="add_log_frame">
                    <property name="maximumSize">
                     <size>
@@ -1440,25 +1331,6 @@ color: #F2F2F2;
                         <number>3</number>
                        </property>
                        <item>
-                        <widget class="QRadioButton" name="inc_radio">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Futura</family>
-                           <pointsize>9</pointsize>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Income</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QRadioButton" name="exp_radio">
                          <property name="minimumSize">
                           <size>
@@ -1474,6 +1346,25 @@ color: #F2F2F2;
                          </property>
                          <property name="text">
                           <string>Expense</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QRadioButton" name="inc_radio">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>9</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Income</string>
                          </property>
                         </widget>
                        </item>
@@ -1661,14 +1552,384 @@ color: #F2F2F2;
                       </property>
                      </spacer>
                     </item>
+                    <item>
+                     <widget class="QFrame" name="ab_totals_frame">
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_37">
+                       <property name="leftMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>3</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>3</number>
+                       </property>
+                       <item>
+                        <widget class="QFrame" name="ab_expense_frame">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_8">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="ab_texp_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_4">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_texp_label">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Total expense</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item alignment="Qt::AlignHCenter">
+                           <widget class="QFrame" name="ab_expval_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_5">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_expval_label">
+                               <property name="text">
+                                <string>te val</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="ab_income_frame">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_10">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="ab_tinc_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_17">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_tinc_label">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Total income</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_2">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item alignment="Qt::AlignHCenter">
+                           <widget class="QFrame" name="ab_incval_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_18">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_incval_label">
+                               <property name="text">
+                                <string>ti val</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QFrame" name="ab_bal_frame">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_9">
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QFrame" name="ab_tbal_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_19">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_tbal_label">
+                               <property name="font">
+                                <font>
+                                 <family>Futura</family>
+                                 <pointsize>9</pointsize>
+                                 <weight>75</weight>
+                                 <bold>true</bold>
+                                </font>
+                               </property>
+                               <property name="text">
+                                <string>Balance</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <spacer name="horizontalSpacer_3">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item alignment="Qt::AlignHCenter">
+                           <widget class="QFrame" name="ab_balval_frame">
+                            <property name="frameShape">
+                             <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="verticalLayout_20">
+                             <property name="leftMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>3</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>3</number>
+                             </property>
+                             <item>
+                              <widget class="QLabel" name="ab_balval_label">
+                               <property name="text">
+                                <string>b val</string>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </item>
                    </layout>
                   </widget>
                  </item>
-                 <item row="1" column="1">
+                 <item row="0" column="1">
                   <widget class="QFrame" name="show_exp_frame">
                    <property name="styleSheet">
                     <string notr="true">*{
 background-color: #B6E1F2;
+color: black;
+}
+
+QPushButton{
+background-color: #51636b;
+color: white;
+border-radius: 5px;
+border: 3px;
+}
+
+QTableWidget{
+border: 3px;
+border-color: red;
+}
+
+QTableWidget::item{
+background-color: #f4cccc;
+color: black;
+}
+
+QTableWidget::item:selected{
+background-color: #ea9999;
 color: black;
 }</string>
                    </property>
@@ -1782,13 +2043,35 @@ color: black;
                    </layout>
                   </widget>
                  </item>
-                 <item row="0" column="0" colspan="3">
-                  <widget class="QFrame" name="ab_totals_frame">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>50</height>
-                    </size>
+                 <item row="0" column="2">
+                  <widget class="QFrame" name="show_inc_frame">
+                   <property name="styleSheet">
+                    <string notr="true">*{
+background-color: #B6E1F2;
+color: black;
+}
+
+QPushButton{
+background-color: #51636b;
+color: white;
+border-radius: 5px;
+border: 3px;
+}
+
+QTableWidget{
+border: 3px;
+border-color: red;
+}
+
+QTableWidget::item{
+background-color: #d9ead3;
+color: black;
+}
+
+QTableWidget::item:selected{
+background-color: #b6d7a8;
+color: black;
+}</string>
                    </property>
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1796,230 +2079,93 @@ color: black;
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_7">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_22">
                     <property name="leftMargin">
-                     <number>0</number>
+                     <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>0</number>
+                     <number>3</number>
                     </property>
                     <property name="rightMargin">
-                     <number>0</number>
+                     <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>0</number>
+                     <number>3</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="ab_expense_frame">
+                     <widget class="QFrame" name="ab_inctit_frame">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>30</height>
+                       </size>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_8">
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
+                      <layout class="QVBoxLayout" name="verticalLayout_27">
                        <item>
-                        <widget class="QFrame" name="ab_texp_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                        <widget class="QLabel" name="ab_inctit_label_2">
+                         <property name="font">
+                          <font>
+                           <family>Futura</family>
+                           <pointsize>10</pointsize>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
                          </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
+                         <property name="text">
+                          <string>Income</string>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_4">
-                          <item>
-                           <widget class="QLabel" name="ab_texp_label">
-                            <property name="font">
-                             <font>
-                              <family>Futura</family>
-                              <pointsize>9</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Total expense</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="ab_expval_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
                          </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_5">
-                          <item>
-                           <widget class="QLabel" name="ab_expval_label">
-                            <property name="text">
-                             <string>te val</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
                         </widget>
                        </item>
                       </layout>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QFrame" name="ab_income_frame">
+                     <widget class="QFrame" name="ab_inctab_frame">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_10">
+                      <layout class="QVBoxLayout" name="verticalLayout_30">
                        <property name="leftMargin">
-                        <number>0</number>
+                        <number>3</number>
                        </property>
                        <property name="topMargin">
-                        <number>0</number>
+                        <number>3</number>
                        </property>
                        <property name="rightMargin">
-                        <number>0</number>
+                        <number>3</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>0</number>
+                        <number>3</number>
                        </property>
                        <item>
-                        <widget class="QFrame" name="ab_tinc_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                        <widget class="QTableWidget" name="ab_inctab_widget">
+                         <property name="enabled">
+                          <bool>true</bool>
                          </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
+                         <property name="showGrid">
+                          <bool>true</bool>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_17">
-                          <item>
-                           <widget class="QLabel" name="ab_tinc_label">
-                            <property name="font">
-                             <font>
-                              <family>Futura</family>
-                              <pointsize>9</pointsize>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Total income</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="ab_incval_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_18">
-                          <item>
-                           <widget class="QLabel" name="ab_incval_label">
-                            <property name="text">
-                             <string>ti val</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QFrame" name="ab_bal_frame">
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_9">
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <item>
-                        <widget class="QFrame" name="ab_tbal_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_19">
-                          <item>
-                           <widget class="QLabel" name="ab_tbal_label">
-                            <property name="font">
-                             <font>
-                              <family>Futura</family>
-                              <pointsize>9</pointsize>
-                              <weight>50</weight>
-                              <bold>false</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Balance</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QFrame" name="ab_balval_frame">
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
-                         </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
-                         </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_20">
-                          <item>
-                           <widget class="QLabel" name="ab_balval_label">
-                            <property name="text">
-                             <string>b val</string>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                         <attribute name="horizontalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderHighlightSections">
+                          <bool>true</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderVisible">
+                          <bool>true</bool>
+                         </attribute>
                         </widget>
                        </item>
                       </layout>
@@ -2237,7 +2383,6 @@ border: 5px;
   <tabstop>year_combo</tabstop>
   <tabstop>month_combo</tabstop>
   <tabstop>inc_radio</tabstop>
-  <tabstop>exp_radio</tabstop>
   <tabstop>menu_button</tabstop>
   <tabstop>show_bud_button</tabstop>
   <tabstop>add_log_button</tabstop>
