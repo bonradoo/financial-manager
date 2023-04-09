@@ -142,13 +142,21 @@ def pieChart():
     series.append('C++', 30)
     series.append('C', 10)
 
+    # slice_ = QtCharts.QPieSlice()
+    # slice_ = series.slices()[2]
+    # slice_.setExploaded(True)
+    # slice_.setLabelVisable(True)
+    
+
     chart = QtCharts.QChart()
+    chart.legend().hide()
     chart.addSeries(series)
+    chart.createDefaultAxes()
     chart.setAnimationOptions(QtCharts.QChart.SeriesAnimations)
     chart.setTitle('Test')
 
-    # chartView = QtCharts.QChartView(chart)
-    # chartView.setRenderHint(QPainter.Antialiasing)
+    chartView = QtCharts.QChartView(chart)
+    chartView.setRenderHint(QPainter.Antialiasing)
 
     # lay = QtWidgets.QHBoxLayout()
     # lay.addWidget(chartView)
