@@ -1,4 +1,5 @@
 Type,Place,Title,Amount
+inc,-,Na życie,1600.0
 exp,Biedronka,Jedzenie,30.07
 exp,Pasaż,Cymbergaj,11
 exp,Burger King,Jedzenie,16.99
@@ -15,4 +16,3 @@ exp,Pyszne,Jedzenie,65.49
 exp,Fuga Mundi,Billard,42
 exp,Biedronka,Piwo,3.69
 exp,Urbancard,Bilety,1.6
-inc,-,Na życie,1600.0

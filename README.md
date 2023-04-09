@@ -4,14 +4,14 @@ The primary objective of this project is to facilitate budget management using f
 
 
 ## ▶️ Current state
-At present, the 'Budget' section of the app is complete and functional, though some adjustments may be made in the future. My aim is to promptly address any minor issues that arise on a daily basis and release new versions of the app as frequently as possible.
+Currently, the 'Budget' section of the app is nearing completion, with room for minor adjustments in the future. However, graphs are currently unavailable, but rest assured, I am actively working towards implementing this feature in the near future. My objective is to promptly address any minor issues that may arise on a daily basis and release new versions of the app as frequently as possible, ensuring a seamless user experience.
 
 
-## How to run (Windows):
+## How to run:
 1. ``` py -m venv venv ```
 2. ``` .\venv\Scripts\Activate.ps1 ```
 3. ``` pip install -r requirements.txt ```
-4. Run main_gui.py
+4. Run main.py
 
 
 ## 👌 About Me
