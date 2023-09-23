@@ -1,7 +1,2 @@
 __pycache__
-test
-venv
-logs.txt
-test.py
-test2.py
-main_tut.py
+.venv

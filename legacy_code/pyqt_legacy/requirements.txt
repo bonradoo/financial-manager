@@ -1,0 +1,4 @@
+PyQt5
+PyQt5Designer
+PySide6
+QT-PyQt-PySide-Custom-Widgets
