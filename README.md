@@ -27,5 +27,6 @@ module.exports = {
   ],
 }
 ```
-6. Run to compile and watch for changes `npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch`
-7. Run main.py to access the application on `localhost:5000`
+6. Install ApexCharts `npm install apexcharts --save`
+7. Run to compile and watch for changes `npx tailwindcss -i ./static/src/input.css -o ./static/dist/css/output.css --watch`
+8. Run main.py to access the application on `localhost:5000`

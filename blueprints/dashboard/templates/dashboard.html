@@ -5,13 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <title>Flowbite Flask</title>
 </head>
-<body>
+<body class="bg-slate-200">
 {% include 'partials/navigation.html' %}
 
-{% block content %}{% endblock %}
+<div class="p-4">
+    <div class="p-4 border-2 border-gray-400 border-dashed rounded-lg dark:border-gray-700 bg-slate-300">
+    <!-- {% block content %}
+    {% endblock %} -->
+    <div class="grid grid-cols-2">
+        <div>
+            {% include 'charts/exp_inc_line.html' %}
+        </div>
+        <div>
+            {% include 'charts/exp_inc_bar.html' %}
+        </div>
+    </div>
+    </div>
+ </div>
 
-{% include 'partials/footer.html' %}
+ <div class="p-4">
+    <div class="border-2 border-gray-400 border-dashed rounded-lg dark:border-gray-700 bg-slate-300">
+        {% include 'partials/footer.html' %}
+    </div>
+ </div>
 </body>
 </html>
