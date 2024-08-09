@@ -1,4 +1,0 @@
-Type,Place,Title,Amount
-inc,-,Test,1000
-inc,-,ASDF,123
-exp,asd,dsa,123.0

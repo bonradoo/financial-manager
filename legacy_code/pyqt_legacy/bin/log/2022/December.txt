@@ -1,2 +1,0 @@
-Type,Place,Title,Amount
-inc,-,Kaska od Blazeja,150
