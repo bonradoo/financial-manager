@@ -1,0 +1,47 @@
+<!-- blueprints/profile/templates/profile/profile.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-3xl font-bold text-gray-800">Profile</h1>
+<form method="post" class="mt-4 max-w-md">
+    <!-- API Key Field -->
+    <div class="mb-4">
+        <label class="block text-gray-700">
+            Exchangerate-API Key:
+            <input type="text" name="api_key" value="{{ profile_data.get('api_key', '') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your API key" required>
+        </label>
+        <small class="text-gray-500">Get your free API key from <a href="https://www.exchangerate-api.com/" class="text-blue-600 underline" target="_blank">Exchangerate-API.com</a>.</small>
+    </div>
+    <!-- Other Profile Fields -->
+    <div class="mb-4">
+        <label class="block text-gray-700">
+            Full Name:
+            <input type="text" name="full_name" value="{{ profile_data.get('full_name', '') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+        </label>
+    </div>
+    <!-- ... other fields like email, age ... -->
+    <!-- Default Currency Field -->
+    {% if currency_list %}
+    <div class="mb-4">
+        <label class="block text-gray-700">
+            Default Currency:
+            <select name="default_currency" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                {% for code, name in currency_list.items() %}
+                    <option value="{{ code }}" {% if profile_data.get('default_currency', '') == code %}selected{% endif %}>{{ code }} - {{ name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+    </div>
+    {% else %}
+    <div class="mb-4">
+        <label class="block text-gray-700">
+            Default Currency:
+            <select name="default_currency" disabled class="mt-1 block w-full border-gray-300 rounded-md shadow-sm bg-gray-100">
+                <option value="">Please enter your API key and save to load currencies</option>
+            </select>
+        </label>
+    </div>
+    {% endif %}
+    <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md">Save</button>
+</form>
+{% endblock %}

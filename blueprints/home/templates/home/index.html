@@ -1,0 +1,10 @@
+<!-- blueprints/home/templates/home/index.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="text-3xl font-bold text-gray-800">Welcome to the Financial Manager</h1>
+    <p class="mt-4 text-gray-600">This is the home page.</p>
+    {% if 'username' in session %}
+        <p class="mt-4 text-gray-800">Welcome back, {{ session['username'] }}!</p>
+    {% endif %}
+{% endblock %}
